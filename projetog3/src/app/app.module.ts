@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
+import {InputTextModule} from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     CarouselModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    InputTextModule,
+    PasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]

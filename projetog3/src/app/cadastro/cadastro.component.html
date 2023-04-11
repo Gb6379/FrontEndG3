@@ -2,36 +2,63 @@
   <div class="container margem-superior">
     <div class="form-group box">
         <h3> Cadastro de usuário</h3>
-        <input type="text" class="form-control" id="usuario" name="nome" placeholder="Informe seu nome">
+        <span class="p-float-label">
+          <input type="text" class="form-control" id="usuario" name="nome" pInputText>
+          <label for="usuario">Nome</label>
+        </span>
         &nbsp;
         <br>
         <div class="informacao">
-          <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Informe seu telefone">
-          <input type="text" class=" form-control" id="email" name="email" placeholder="Informe seu e-mail">
+          <span class="p-float-label">
+            <input type="text" class="form-control" id="telefone" name="telefone" pInputText>
+            <label for="telefone">Telefone</label>
+          </span>
+          <span class="p-float-label">
+            <input type="text" class=" form-control" id="email" name="email" pInputText>
+            <label for="email">Email</label>
+          </span>
         </div>
         &nbsp;
         <div class="informacao">
-        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha">
-        <input type="password" class="form-control" id="ConfirmacaoSenha" name="ConfirmacaoSenha" placeholder="Digite novamente sua senha">
+        <span class="p-float-label">
+          <p-password [toggleMask]="true" id="senha"></p-password>
+          <label for="password">Senha</label>
+        </span>
+        <span class="p-float-label">
+          <p-password [toggleMask]="true" id="confirmaSenha"></p-password>
+          <label for="password">Confirmação de senha</label>
+        </span>
         </div>
         &nbsp;
         <div class="informacao">
-          <input type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(cep.value , f)" placeholder="CEP">
-          <input type="text" class="form-control" id="bairro" name="bairro" ngModel #bairro="ngModel" placeholder="Bairro" disabled>
+          <span class="p-float-label">
+            <input type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(cep.value , f)" pInputText>
+            <label for="cep">CEP</label>
+          </span>
+          <span class="p-float-label">
+          <input type="text" class="form-control" id="bairro" name="bairro" ngModel #bairro="ngModel" placeholder="Bairro" disabled pInputText>
+          <label for="bairro">Bairro</label>
+        </span>
         </div>
         &nbsp;
         <div class="informacao">
-          <input type="text" class="form-control" id="logradouro" name="logradouro" ngModel #logradouro="ngModel" placeholder="Rua" disabled>
-          <input type="text" class="form-control" id="numero" name="numero" placeholder="Número">
+          <span class="p-float-label">
+          <input type="text" class="form-control" id="logradouro" name="logradouro" ngModel #logradouro="ngModel" placeholder="Rua" disabled pInputText>
+          <label for="logradouro">Rua</label>
+        </span>
+          <span class="p-float-label">
+            <input type="text" class="form-control" id="numero" name="numero" pInputText>
+            <label for="numero">Número</label>
+          </span>
         </div>
         &nbsp;
-        <div class="informacao">
-          <input type="text" class="form-control" id="cidade" name="cidade" ngModel #cidade="ngModel" placeholder="Cidade" disabled>
-          <input type="text" class="form-control" id="uf" name="uf" ngModel #uf="ngModel" placeholder="Estado" disabled>
-        </div>
+          <span class="p-float-label">
+          <input type="text" class="form-control" id="cidade" name="cidade" ngModel #cidade="ngModel" placeholder="Cidade" disabled pInputText>
+          <label for="cidade">Cidade</label>
+        </span>
         <br>
-        <button class="btn btn-secondary button"> Cancelar </button>
-        <button class="btn btn-primary button"> Entrar </button> <!-- provisóriamente sem validação -->
+        <button class="btn btn-secondary button"> Cadastrar </button>
+        <button class="btn btn-primary button"> Limpar </button> <!-- provisóriamente sem validação -->
     </div>
   </div>
 </form>

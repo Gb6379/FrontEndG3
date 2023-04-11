@@ -38,8 +38,9 @@ button{
 
 .informacao{
   display: flex;
+  justify-content: space-between;
 }
 
-#telefone,#senha,#cep,#logradouro,#cidade{
-  margin-right: 1rem;
+#telefone, #email, #cep, #bairro, #logradouro, #numero{
+  width: 235px;
 }
