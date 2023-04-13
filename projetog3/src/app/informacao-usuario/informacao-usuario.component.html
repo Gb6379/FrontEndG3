@@ -1,0 +1,50 @@
+<div>
+  <p-card>
+    <ng-template pTemplate="header">
+        <h2>Dados usuário</h2>
+    </ng-template>
+    <p-table [value]="dadosUsuario" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dados>
+          <tr>
+              <td>{{dados.nome}}</td>
+              <td>{{dados.email}}</td>
+              <td>{{dados.cpf}}</td>
+              <td>{{dados.telefone}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+  </p-card>
+
+  <p-card>
+    <ng-template pTemplate="header">
+        <h2>Endereço</h2>
+    </ng-template>
+    <p-table [value]="dadosUsuario" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>CEP</th>
+              <th>Rua</th>
+              <th>Bairro</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dados>
+          <tr>
+              <td>{{dados.nome}}</td>
+              <td>{{dados.email}}</td>
+              <td>{{dados.cpf}}</td>
+              <td>{{dados.telefone}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+  </p-card>
+</div>

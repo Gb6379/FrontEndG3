@@ -16,6 +16,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './success/success.component';
+import { CardModule } from 'primeng/card';
+import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
+import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -29,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CadastroComponent,
     ShoppingCartComponent,
     SuccessComponent,
+    InformacaoUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     InputTextModule,
     PasswordModule,
+    ReactiveFormsModule,
+    CardModule,
+    TableModule,
     ReactiveFormsModule,
   ],
   providers: [],

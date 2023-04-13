@@ -1,27 +1,35 @@
-<form #f="ngForm">
+<form [formGroup]="form" class="conteudo">
   <div class="container margem-superior">
     <div class="form-group box">
-        <h3> Cadastro de usuário</h3>
+      <img class="logo" src="../../assets/imagens/ifood-logo.png" alt="ifood-logo">
+      <h3>Cadastra-se</h3>
+        <h5>Preencha seus dados de cadastro</h5>
+      <div class="informacao">
         <span class="p-float-label">
-          <input type="text" class="form-control" id="usuario" name="nome" pInputText>
+          <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" pInputText>
           <label for="usuario">Nome</label>
         </span>
+        <span class="p-float-label">
+          <input type="text" class="form-control" id="cpf" name="cpf" formControlName="cpf" pInputText>
+          <label for="cpf">CPF</label>
+        </span>
+      </div>
         &nbsp;
         <br>
         <div class="informacao">
           <span class="p-float-label">
-            <input type="text" class="form-control" id="telefone" name="telefone" pInputText>
+            <input type="text" class="form-control" id="telefone" name="telefone" formControlName="telefone" pInputText>
             <label for="telefone">Telefone</label>
           </span>
           <span class="p-float-label">
-            <input type="text" class=" form-control" id="email" name="email" pInputText>
+            <input type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
             <label for="email">Email</label>
           </span>
         </div>
         &nbsp;
         <div class="informacao">
         <span class="p-float-label">
-          <p-password [toggleMask]="true" id="senha"></p-password>
+          <p-password [toggleMask]="true" id="senha" formControlName="senha"></p-password>
           <label for="password">Senha</label>
         </span>
         <span class="p-float-label">
@@ -32,18 +40,18 @@
         &nbsp;
         <div class="informacao">
           <span class="p-float-label">
-            <input type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(cep.value , f)" pInputText>
+            <input type="text" class="form-control" id="cep" name="cep" pInputText>
             <label for="cep">CEP</label>
           </span>
           <span class="p-float-label">
-          <input type="text" class="form-control" id="bairro" name="bairro" ngModel #bairro="ngModel" placeholder="Bairro" disabled pInputText>
+          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" disabled pInputText>
           <label for="bairro">Bairro</label>
         </span>
         </div>
         &nbsp;
         <div class="informacao">
           <span class="p-float-label">
-          <input type="text" class="form-control" id="logradouro" name="logradouro" ngModel #logradouro="ngModel" placeholder="Rua" disabled pInputText>
+          <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua" disabled pInputText>
           <label for="logradouro">Rua</label>
         </span>
           <span class="p-float-label">
@@ -53,12 +61,13 @@
         </div>
         &nbsp;
           <span class="p-float-label">
-          <input type="text" class="form-control" id="cidade" name="cidade" ngModel #cidade="ngModel" placeholder="Cidade" disabled pInputText>
+          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" disabled pInputText>
           <label for="cidade">Cidade</label>
         </span>
         <br>
-        <button class="btn btn-secondary button"> Cadastrar </button>
-        <button class="btn btn-primary button"> Limpar </button> <!-- provisóriamente sem validação -->
+        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR </button>
+        &nbsp;
+        <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>
   </div>
 </form>

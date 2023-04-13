@@ -1,8 +1,12 @@
 @import 'material-icons/iconfont/material-icons.css';
 
 body{
-    background-color: #f7f7f7;
-    height:25rem;
+    height:20rem;
+}
+
+.flex-conteudo{
+    display: flex;
+    flex-direction: column;
 }
 
 input{
@@ -25,8 +29,12 @@ img:hover{
     transform: scale(1.06);
 }
 
+.container-buscar {
+  margin-left: 20rem;
+}
+
 .conteudo{
-    padding-top: 1.5rem;
+    padding-top: 2rem;
 }
 
 .tittle-principal{
@@ -44,6 +52,7 @@ img:hover{
 }
 
 .button-red{
+    margin: 0.25rem 0 0 0;
     background: red;
     color: white;
     border-radius: 6px;
@@ -70,32 +79,33 @@ img:hover{
 .search-bar{
     margin-top: 0.3rem;
     position: inherit;
+    height: 44px;
+    border: 1px solid black;
+}
+
+.search-bar:focus{
+    border: 1px solid red;
 }
 
 .img-cima{
     width: 35%!important;
     height: 100%;
     margin-right: 20px;
-    position: relative;
-    left: 3rem;
 }
 
 .img-baixo{
     width: 15%!important;
     height: 100%;
     padding: 7px;
-    position: relative;
     left: 18rem;
 }
 
 .img-link-cima{
-    position: relative;
     bottom: 7rem;
     margin-right: 10px!important;
 }
 
 .img-link-baixo{
-    position: relative;
     bottom: 5rem;
 }
 
@@ -103,4 +113,19 @@ img:hover{
     position: relative;
     left: 2rem;
     bottom: 1rem;
+}
+
+.row{
+    width: 100%;
+    margin: 0  0 1rem -7rem ;
+}
+
+.row-baixo{
+    margin-left: 25.5rem;
+}
+
+.footer{
+    border-top: 1px solid black;
+    margin: 1rem 0 0 0;
+    width: 95%;
 }
