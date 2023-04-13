@@ -20,6 +20,8 @@ import { CardModule } from 'primeng/card';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
 import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProdutoComponent } from './produto/produto.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ShoppingCartComponent,
     SuccessComponent,
     InformacaoUsuarioComponent,
+    ProdutoComponent,
+    CategoriaComponent,
   ],
   imports: [
     BrowserModule,

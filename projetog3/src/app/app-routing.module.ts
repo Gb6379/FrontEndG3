@@ -8,6 +8,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './success/success.component';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'ShoppingCart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },
+  { path: 'Produto', component: ProdutoComponent},
+  { path: 'Categoria', component: CategoriaComponent}
 ];
 
 @NgModule({
