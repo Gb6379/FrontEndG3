@@ -5,19 +5,23 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SuccessComponent } from './success/success.component';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'Restaurantes', component: RestaurantesComponent},
-  {path: 'Login', component: LoginComponent},
-  {path: 'Admin', component: AdminComponent},
-  {path: 'Cadastro', component: CadastroComponent},
-  {path: 'Dados', component: InformacaoUsuarioComponent}
+  { path: '', component: HomeComponent },
+  { path: 'Restaurantes', component: RestaurantesComponent },
+  { path: 'Login', component: LoginComponent },
+  { path: 'Admin', component: AdminComponent },
+  { path: 'Cadastro', component: CadastroComponent },
+  { path: 'ShoppingCart', component: ShoppingCartComponent },
+  { path: 'Success', component: SuccessComponent },
+  { path: 'Dados', component: InformacaoUsuarioComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

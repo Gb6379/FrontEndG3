@@ -1,0 +1,24 @@
+ [
+  {
+    "id": "1",
+    "name": "Heineken",
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fw7.pngwing.com%2Fpngs%2F30%2F317%2Fpng-transparent-superstah-liquor-bottle-beer-budweiser-heineken-international-bottle-beer-bottle-horse-wine-black.png&f=1&nofb=1&ipt=cd5a9362d72ce23b3004939e250b05506c6c61c0e79c02209e7b89a6cdab4cb6&ipo=images",
+    "description":"Heineken's® iconic taste comes from its simplicity, quality and dedication to pure natural ingredients: the perfect medley of malt, barley, hops and our own special A-Yeast.",
+    "type": "Beer",
+    "color": "Green",
+    "price": 19.99,
+    "discount": 0,
+    "quantity": 0
+  },
+  {
+    "id": "2",
+    "name": "Budweiser",
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.designi.com.br%2Fimages%2Fpreview%2F10002423.jpg&f=1&nofb=1&ipt=d03239ce8486595b890aa7675a1127e198b07ad9a14e35758ed819b3f6cdd5a2&ipo=images",
+    "description":"Budweiser is a medium-bodied, flavorful, crisp and pure beer with blended layers of premium American and European hop aromas, brewed for the perfect balance of flavor and refreshment.",
+    "type": "Beer",
+    "color": "Brown",
+    "price": 9.99,
+    "discount": 0,
+    "quantity": 0
+  }
+]

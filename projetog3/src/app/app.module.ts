@@ -12,11 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import {CardModule} from 'primeng/card';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SuccessComponent } from './success/success.component';
+import { CardModule } from 'primeng/card';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     AdminComponent,
     CadastroComponent,
-    InformacaoUsuarioComponent
+    ShoppingCartComponent,
+    SuccessComponent,
+    InformacaoUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,11 +44,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     InputTextModule,
     PasswordModule,
+    ReactiveFormsModule,
     CardModule,
     TableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
