@@ -8,7 +8,7 @@ import { first, tap } from 'rxjs';
 })
 export class EnderecoService {
 
-  private readonly API = '/address'
+  private readonly API = 'api/address'
 
   constructor(private httpClient: HttpClient) { }
 

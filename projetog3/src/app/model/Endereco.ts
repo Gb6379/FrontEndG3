@@ -1,7 +1,8 @@
 export interface Endereco {
+
+street: String;
+  neighborhood: String;
   cep: String;
-  Rua: String;
-  Bairro: String;
-  Cidade: String;
-  Estado: String;
+  city: String;
+  state: String;
 }

@@ -8,7 +8,7 @@ import { first, take, tap } from 'rxjs';
 })
 export class DadosService {
 
-  private readonly API = '/users'
+  private readonly API = 'api/auth/register'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,6 +21,8 @@ export class DadosService {
   }
 
   save(record: Usuario){
+    console.log(record);
     return this.httpClient.post<Usuario>(this.API, record).pipe(first());
+
   }
 }

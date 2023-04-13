@@ -1,6 +1,6 @@
 const PROXY_CONFIG  = [
   {
-    context: ['/'],
+    context: ['/api'],
     target: 'http://localhost:9090',
     secure: false,
     logLevel: 'debug'

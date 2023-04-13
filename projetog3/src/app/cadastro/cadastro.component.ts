@@ -14,11 +14,10 @@ export class CadastroComponent implements OnInit {
 
   constructor(private cepService: CepServiceService, private formBuilder: FormBuilder, private service: DadosService) {
     this.form = this.formBuilder.group({
-      nome: [null],
-      email: [null],
+      name: [null],
       cpf: [null],
-      telefone: [null],
-      senha: [null]
+      email: [null],
+      password: [null],
     })
    }
 
