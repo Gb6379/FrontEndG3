@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CepServiceService } from './cep-service.service';
-import { FormControl } from '@angular/forms';
+import { CepServiceService } from '../service/cep-service.service';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { DadosService } from '../service/dados.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,7 +10,17 @@ import { FormControl } from '@angular/forms';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor(private cepService: CepServiceService) { }
+  form: FormGroup;
+
+  constructor(private cepService: CepServiceService, private formBuilder: FormBuilder, private service: DadosService) {
+    this.form = this.formBuilder.group({
+      nome: [null],
+      email: [null],
+      cpf: [null],
+      telefone: [null],
+      senha: [null]
+    })
+   }
 
   ngOnInit(): void {
   }
@@ -26,6 +37,10 @@ export class CadastroComponent implements OnInit {
       cidade: dados.localidade,
       uf: dados.uf
     })
+  }
+
+  onSubmit(){
+    this.service.save(this.form.value).subscribe(data => console.log(data));
   }
 
 }

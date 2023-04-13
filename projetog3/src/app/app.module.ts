@@ -14,6 +14,10 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import {CardModule} from 'primeng/card';
+import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
+import {TableModule} from 'primeng/table';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { PasswordModule } from 'primeng/password';
     HomeComponent,
     LoginComponent,
     AdminComponent,
-    CadastroComponent
+    CadastroComponent,
+    InformacaoUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,10 @@ import { PasswordModule } from 'primeng/password';
     HttpClientModule,
     FormsModule,
     InputTextModule,
-    PasswordModule
+    PasswordModule,
+    CardModule,
+    TableModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

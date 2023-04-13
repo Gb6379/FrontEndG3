@@ -1,16 +1,20 @@
 <header>
-    <table>
-        <tr>
-            <td><a routerLink=""><img class="logo" src="../../assets/imagens/ifood-logo.png"></a></td>
-            <td><a href="">Entregador</a></td>
-            <td><a routerLink="Restaurantes">Restaurante e Mercado</a></td>
-            <td><a href="">Carreiras</a></td>
-            <td><a href="">iFood Card</a></td>
+  <div class="cabeca-flex">
+      <div>
+          <table>
+              <tr>
+                  <td><a routerLink=""><img class="logo" src="../../assets/imagens/ifood-logo.png"></a></td>
+                  <td><a href="">Entregador</a></td>
+                  <td><a routerLink="Restaurantes">Restaurante e Mercado</a></td>
+                  <td><a href="">Carreiras</a></td>
+                  <td><a href="">iFood Card</a></td>
+              </tr>
+          </table>
+      </div>
 
-            <div class="direita">
-                <td><a routerLink="Cadastro" class="text-red" href="">Criar conta</a></td>
-                <td><button (click)="newChange()" class="button-red">Entrar</button></td>
-            </div>
-        </tr>
-    </table>
+      <div class="direita">
+          <a routerLink="Cadastro" class="text-red" href="">Criar conta</a>
+          <button (click)="newChange()" class="button-red">Entrar</button>
+      </div>
+  </div>
 </header>
