@@ -12,8 +12,11 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SuccessComponent } from './success/success.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { PasswordModule } from 'primeng/password';
     HomeComponent,
     LoginComponent,
     AdminComponent,
-    CadastroComponent
+    CadastroComponent,
+    ShoppingCartComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,10 @@ import { PasswordModule } from 'primeng/password';
     HttpClientModule,
     FormsModule,
     InputTextModule,
-    PasswordModule
+    PasswordModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
