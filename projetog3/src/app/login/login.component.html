@@ -4,12 +4,12 @@
       <h3>Faça seu login</h3>
       <h5>insira seus dados de usuario e senha</h5>
       <p>Usuario</p>
-      <input id="usuario" type="text" class="form-control input" placeholder="Nome do usuário">
+      <input [(ngModel)] = "authRequest.email" id="usuario" type="text" class="form-control input" placeholder="Nome do usuário">
       &nbsp;
       <p>Senha</p>
-      <input id="senha" type="password" class="form-control input" placeholder="Senha">
+      <input [(ngModel)] = "authRequest.password" id="senha" type="password" class="form-control input" placeholder="Senha">
       <br>
-      <button (click)="ChangeAdmin()" class="btn btn-primary button entrar"> ENTRAR </button> <!-- provisóriamente sem validação -->
+      <button (click)="login()" class="btn btn-primary button entrar"> ENTRAR </button> <!-- provisóriamente sem validação -->
       &nbsp;
       <button (click)="ChangeHome()" class="btn btn-secondary button cancelar"> ESTOU COM PROBLEMAS PARA ACESSAR </button>
   </div>

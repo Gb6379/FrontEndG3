@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+//import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-restaurantes',
@@ -9,16 +9,16 @@ import { ApiService } from '../service/api.service';
 export class RestaurantesComponent implements OnInit {
 
 restaurantes: any;
-constructor(private apiservice: ApiService){}
+//constructor(private apiservice: ApiService){}
 
 ngOnInit() {
-  this.getAllRestaurantes();
+  //this.getAllRestaurantes();
 }
 
-getAllRestaurantes() {
+/*getAllRestaurantes() {
   this.apiservice.getAllData().subscribe((res)=>{
     this.restaurantes = res.data;
   });
-}
+}*/
 
 }

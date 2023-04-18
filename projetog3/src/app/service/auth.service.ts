@@ -7,6 +7,7 @@ import { RegisterRequest } from '../model/register-request';
 import { StrictHttpResponse } from '../model/strict-http-response';
 import { AuthenticationResponse } from '../model/authentication-response';
 import { RequestBuilder } from './request-builder';
+import { AuthenticationRequest } from '../model/authentication-request';
 
 const AUTH_API = 'http://localhost:9090/auth/';
 
@@ -26,7 +27,9 @@ export class AuthService extends BaseServiceService {
     super(config, http);
   }
 
-  static readonly api_path = 'http://localhost:9090/auth/';
+  static readonly register_path = '/auth/register';
+  static readonly login_user_path = '/auth/user/authenticate'
+  static readonly login_company_path = '/auth/company/authenticate'
 
 
    /**
@@ -35,14 +38,9 @@ export class AuthService extends BaseServiceService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-    register$Response(params: {
-      body: RegisterRequest
-    },
-    context?: HttpContext
+    register$Response(params: {body: RegisterRequest}, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponse>> {
   
-  ): Observable<StrictHttpResponse<AuthenticationResponse>> {
-  
-      const rb = new RequestBuilder(this.rootUrl, AuthService.api_path, 'post');
+      const rb = new RequestBuilder(this.rootUrl, AuthService.register_path, 'post');
       if (params) {
         rb.body(params.body, 'application/json');
       }
@@ -59,32 +57,66 @@ export class AuthService extends BaseServiceService {
       );
     }
 
-  loginUser(username: string, password: string) : Observable<any> {
-    return this.http.post(AUTH_API + '/user/authenticate', {
-      username,
-      password
+  
+    register(params: {
+      body: RegisterRequest
+    },
+    context?: HttpContext
+  
+  ): Observable<AuthenticationResponse> {
+      console.log("register")
+      console.log(params.body)
+      return this.register$Response(params,context).pipe(
+        map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
+      );
+    }
+  
+
+    login$response(params: {body: AuthenticationRequest}, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponse>>{
+      const rb = new RequestBuilder(this.rootUrl, AuthService.login_user_path, 'post');
+      if(params){
+        rb.body(params.body, 'application/json');
+      }
+      return this.http.request(rb.build({responseType: 'json', accept: 'application/json', context: context}))
+      .pipe(filter((r: any) => r instanceof HttpResponse), map((r : HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthenticationResponse>;
+      }))
+
+    }
+
+    login$responseC(params: {body: AuthenticationRequest}, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponse>>{
+      const rb = new RequestBuilder(this.rootUrl, AuthService.login_company_path, 'post');
+      if(params){
+        rb.body(params.body, 'application/json');
+      }
+      return this.http.request(rb.build({responseType: 'json', accept: 'application/json', context: context}))
+      .pipe(filter((r: any) => r instanceof HttpResponse), map((r : HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthenticationResponse>;
+      }))
+
+    }
+
+    loginUser(params: {body: AuthenticationRequest},context?: HttpContext): Observable<AuthenticationResponse> {
+
+      return this.login$response(params,context).pipe(
+        map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
+      );
+
+      
+    }
+
+    loginC(params: {body: AuthenticationRequest},context?: HttpContext): Observable<AuthenticationResponse> {
+      return this.login$response(params,context).pipe(
+        map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
+      );
+    }
+  
+
+
+  registerUser(params: {body: AuthenticationRequest}, context?: HttpContext) : Observable<AuthenticationResponse> {
+    return this.http.post(this.rootUrl + AuthService.register_path, {
+      params
     }, httpOptions);
   }
 
-  loginCompany(username: string, password: string) : Observable<any> {
-    return this.http.post(AUTH_API + '/company/authenticate', {
-      username,
-      password
-    }, httpOptions);
-  }
-
-  register(
-    username: string, 
-    password: string, 
-    lastname: string, 
-    cpf: string,
-    email: string) : Observable<any> {
-      return this.http.post(AUTH_API + 'register', {
-        username,
-        lastname,
-        cpf,
-        email,
-        password
-      }, httpOptions);
-  }
 }

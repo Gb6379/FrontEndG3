@@ -1,4 +1,3 @@
-<form [formGroup]="form" class="conteudo">
   <div class="container margem-superior">
     <div class="form-group box">
       <img class="logo" src="../../assets/imagens/ifood-logo.png" alt="ifood-logo">
@@ -6,11 +5,19 @@
         <h5>Preencha seus dados de cadastro</h5>
       <div class="informacao">
         <span class="p-float-label">
-          <input type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
-          <label for="usuario">Nome</label>
+          <input [(ngModel)] = "registerRequest.firstname" type="text" class="form-control" id="nome" name="firstname" pInputText>
+          <label for="firstname">Nome</label>
         </span>
+        &nbsp;
+        <br>
         <span class="p-float-label">
-          <input type="text" class="form-control" id="cpf" name="cpf" formControlName="cpf" pInputText>
+          <input [(ngModel)] = "registerRequest.lastname" type="text" class="form-control" id="lastname" name="lastname" pInputText>
+          <label for="lastname">Sobrenome</label>
+        </span>
+        &nbsp;
+        <br>
+        <span class="p-float-label">
+          <input [(ngModel)] = "registerRequest.cpf"  type="text" class="form-control" id="cpf" name="cpf" pInputText>
           <label for="cpf">CPF</label>
         </span>
       </div>
@@ -18,22 +25,22 @@
         <br>
         <div class="informacao">
           <span class="p-float-label">
-            <input type="text" class="form-control" id="telefone" name="telefone" pInputText>
-            <label for="telefone">Telefone</label>
+            <input [(ngModel)] = "registerRequest.phone" type="text" class="form-control" id="telefone" name="phone" pInputText>
+            <label for="phone">Telefone</label>
           </span>
           <span class="p-float-label">
-            <input type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
+            <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" pInputText>
             <label for="email">Email</label>
           </span>
         </div>
         &nbsp;
         <div class="informacao">
         <span class="p-float-label">
-          <p-password [toggleMask]="true" id="senha" formControlName="password"></p-password>
+          <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha" class="form-control"></p-password>
           <label for="password">Senha</label>
         </span>
         <span class="p-float-label">
-          <p-password [toggleMask]="true" id="confirmaSenha"></p-password>
+          <p-password [toggleMask]="true" id="senha" class="form-control"></p-password>
           <label for="password">Confirmação de senha</label>
         </span>
         </div>
@@ -65,9 +72,8 @@
           <label for="cidade">Cidade</label>
         </span>
         <br>
-        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR </button>
+        <button class="btn btn-secondary button cadastrar" (click)="register()"> CADASTRAR </button>
         &nbsp;
         <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>
   </div>
-</form>

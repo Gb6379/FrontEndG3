@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AuthenticationResponse } from '../model/authentication-response';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -8,33 +10,52 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() { }
-
-  signOut(): void {
-    window.sessionStorage.clear();
+  saveResponse(response: AuthenticationResponse): void {
+    localStorage.setItem('token', response.token as string);
+    localStorage.setItem('userId', response.userId as any as string);
+    localStorage.setItem('username', response.username as any as string);
   }
 
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+  get getToken(): string {
+    return localStorage.getItem('token') as string;
   }
 
-  public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
+  get getUserId(): number {
+    return localStorage.getItem('userId') as any as number;
   }
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  get getUsername(): string {
+    return localStorage.getItem('username') as any as string;
   }
 
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+  get userRole(): string {
+    const token = this.getToken;
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);
+      return decodedToken.role[0].name === 'ROLE' ? 'USER' : 'COMPANY';
     }
-    return {};
+    return '--';
   }
 
+  cleanup(): void {
+    localStorage.clear();
+  }
+
+  get isTokenValid(): boolean {
+    const token = this.getToken;
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const isTokenExpired = jwtHelper.isTokenExpired(token);
+      if (isTokenExpired) {
+        localStorage.clear();
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
+
+ 
 
 }

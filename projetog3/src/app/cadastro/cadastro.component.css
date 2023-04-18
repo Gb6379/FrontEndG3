@@ -44,7 +44,7 @@ label{
   justify-content: space-between;
 }
 
-#telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf{
+#telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf, #lastname{
   width: 235px;
 }
 

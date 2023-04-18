@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from './service/api.service';
+//import { ApiService } from './service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +10,16 @@ export class AppComponent {
   title = 'clone-ifood';
 
   restaurantes: any;
-  constructor(private apiservice: ApiService){}
+ // constructor(private apiservice: ApiService){}
 
 ngOnInit() {
-  this.getAllRestaurantes();
+//this.getAllRestaurantes();
 }
 
-getAllRestaurantes() {
+/*getAllRestaurantes() {
   this.apiservice.getAllData().subscribe((res)=>{
     this.restaurantes = res.data;
   });
-}
+}*/
 
 }
