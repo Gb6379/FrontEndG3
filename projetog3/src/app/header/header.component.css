@@ -11,6 +11,10 @@
   width: 95px;
 }
 
+button{
+  border: none;
+}
+
 .cabeca-flex{
   display: flex;
   flex-direction: row;
@@ -103,3 +107,24 @@ header {
     width: 100%;
     z-index: 9999;
   }
+#cliente {
+  padding: 10px;
+}
+
+.botao1{
+  margin-right: 10px;
+}
+.botao2{
+  margin-left: 10px;
+}
+.Restaurante{
+  margin-right: 15px;
+}
+#sla{
+  display: flex;
+  border-radius: 50px;
+  background-color: red;
+}
+#use{
+  margin-left: 10px;
+}

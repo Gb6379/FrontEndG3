@@ -4,16 +4,17 @@
       <img class="logo" src="../../assets/imagens/ifood-logo.png" alt="ifood-logo">
       <h3>Cadastra-se</h3>
         <h5>Preencha seus dados de cadastro</h5>
-      <div class="informacao">
+
         <span class="p-float-label">
           <input type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
           <label for="usuario">Nome</label>
         </span>
+        &nbsp;
+        <br>
         <span class="p-float-label">
-          <input type="text" class="form-control" id="cpf" name="cpf" formControlName="cpf" pInputText>
-          <label for="cpf">CPF</label>
+          <input type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
+          <label for="cpf">CNPJ</label>
         </span>
-      </div>
         &nbsp;
         <br>
         <div class="informacao">
@@ -65,7 +66,7 @@
           <label for="cidade">Cidade</label>
         </span>
         <br>
-        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR USUARIO </button>
+        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR RESTAURANTE </button>
         &nbsp;
         <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>

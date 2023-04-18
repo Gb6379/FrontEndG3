@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.displayModal= false;
+    this.displayModal2= false;
+  }
 
   newChange(): void {
     this.router.navigateByUrl('Login');
@@ -17,4 +20,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayModal: boolean;
+
+  displayModal2: boolean;
+
+  showModalDialog() {
+      this.displayModal = true;
+  }
+
+  showModalDialog2() {
+    this.displayModal2 = true;
+}
 }

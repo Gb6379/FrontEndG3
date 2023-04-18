@@ -10,6 +10,8 @@ import { SuccessComponent } from './success/success.component';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
+import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },
   { path: 'Produto', component: ProdutoComponent},
-  { path: 'Categoria', component: CategoriaComponent}
+  { path: 'Categoria', component: CategoriaComponent},
+  { path: 'Cadastro-Restaurante', component: CadastroRestauranteComponent},
+  { path: 'Login-restaurante', component: LoginEmpresaComponent}
 ];
 
 @NgModule({

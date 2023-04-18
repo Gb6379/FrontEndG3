@@ -16,8 +16,23 @@
         <td><a routerLink="ShoppingCart" class="text-red" href="">Carrinho</a></td>
           <td><a routerLink="Produto" class="text-red" href="">Produto</a></td>
           <td><a routerLink="Categoria" class="text-red" href="">Categoria</a></td>
-          <a routerLink="Cadastro" class="text-red" href="">Criar conta</a>
-          <button (click)="newChange()" class="button-red">Entrar</button>
+          <td><button (click)="showModalDialog()" class="text-red criar">Criar conta</button>
+          <p-dialog header="CADASTRO" [(visible)]="displayModal" [modal]="true" [style]="{width: '23vw'}"
+              [draggable]="false" [resizable]="false">
+              <div class="div-alguma">
+                <button icon="pi pi-briefcase" pButton class="Restaurante"><a routerLink="Cadastro-Restaurante" (click)="displayModal=false" class="a-modal">RESTAURANTE</a></button>
+                <button icon="pi pi-user" pButton><a routerLink="Cadastro" (click)="displayModal=false" class="a-modal">CLIENTE</a></button>
+              </div>
+          </p-dialog></td>
+          <td><button (click)="showModalDialog2()" class="button-red">Entrar</button>
+          <p-dialog header="ENTRAR" [(visible)]="displayModal2" [modal]="true" [style]="{width: '23vw'}"
+              [draggable]="false" [resizable]="false">
+              <div class="div-alguma">
+                <button icon="pi pi-briefcase" pButton class="Restaurante"><a routerLink="Login-restaurante" (click)="displayModal2=false" class="a-modal">RESTAURANTE</a></button>
+                <button icon="pi pi-user" pButton><a routerLink="Login" (click)="displayModal2=false" class="a-modal">CLIENTE</a></button>
+              </div>
+          </p-dialog></td>
+          <td><button id="sla" pButton icon="pi pi-user"><a id="use" routerLink="Dados" href=""></a></button></td>
       </div>
   </div>
 </header>

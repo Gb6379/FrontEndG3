@@ -22,6 +22,11 @@ import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { DialogModule } from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {AccordionModule} from 'primeng/accordion';
+import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
+import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,8 @@ import { CategoriaComponent } from './categoria/categoria.component';
     InformacaoUsuarioComponent,
     ProdutoComponent,
     CategoriaComponent,
+    CadastroRestauranteComponent,
+    LoginEmpresaComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,10 @@ import { CategoriaComponent } from './categoria/categoria.component';
     CardModule,
     TableModule,
     ReactiveFormsModule,
+    DialogModule,
+    ButtonModule,
+    AccordionModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
