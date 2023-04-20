@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'Restaurantes', component: RestaurantesComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Admin', component: AdminComponent },
-  { path: 'Cadastro', component: CadastroComponent },
+  { path: 'Cadastro-Usuario', component: CadastroComponent },
   { path: 'ShoppingCart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },

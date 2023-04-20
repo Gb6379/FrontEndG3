@@ -17,7 +17,6 @@ export class CadastroComponent {
   registerRequest: RegisterRequest = {firstname: '', lastname: '',cpf: '',phone: '', email:'', password: ''};
   errorMsgs: string[] = [];
 
-  //form: FormGroup;
 
   constructor(
     private cepService: CepServiceService, 
@@ -30,12 +29,7 @@ export class CadastroComponent {
 
     
     ) {
-    /*this.form = this.formBuilder.group({
-      name: [null],
-      cpf: [null],
-      email: [null],
-      password: [null],
-    })*/
+
    }
 
   login() {

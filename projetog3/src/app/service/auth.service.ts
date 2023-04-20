@@ -8,6 +8,7 @@ import { StrictHttpResponse } from '../model/strict-http-response';
 import { AuthenticationResponse } from '../model/authentication-response';
 import { RequestBuilder } from './request-builder';
 import { AuthenticationRequest } from '../model/authentication-request';
+import { RegisterRequestRestaurante } from '../model/register-request-restaurante';
 
 const AUTH_API = 'http://localhost:9090/auth/';
 
@@ -59,7 +60,7 @@ export class AuthService extends BaseServiceService {
 
   
     register(params: {
-      body: RegisterRequest
+      body : RegisterRequest
     },
     context?: HttpContext
   
@@ -67,6 +68,38 @@ export class AuthService extends BaseServiceService {
       console.log("register")
       console.log(params.body)
       return this.register$Response(params,context).pipe(
+        map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
+      );
+    }
+
+    register$ResponseResta(params: {body: RegisterRequestRestaurante}, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponse>> {
+  
+      const rb = new RequestBuilder(this.rootUrl, AuthService.register_path, 'post');
+      if (params) {
+        rb.body(params.body, 'application/json');
+      }
+  
+      return this.http.request(rb.build({
+        responseType: 'json',
+        accept: 'application/json',
+        context: context
+      })).pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<AuthenticationResponse>;
+        })
+      );
+    }
+
+    registerResta(params: {
+      body : RegisterRequestRestaurante
+    },
+    context?: HttpContext
+  
+  ): Observable<AuthenticationResponse> {
+      console.log("register")
+      console.log(params.body)
+      return this.register$ResponseResta(params,context).pipe(
         map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
       );
     }
