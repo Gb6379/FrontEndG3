@@ -57,16 +57,13 @@ export class CadastroComponent {
   }
 
   register() {
-    console.log("oi")
     this.errorMsgs = [];
     this.authService.register({
       body: this.registerRequest
     }).subscribe({
       next: (res) => { 
-        console.log("sub")
-        console.log(res); 
         this.tokenService.saveResponse(res);
-        this.router.navigate(['register-success'])
+        this.router.navigate(['Login'])
       },
       error: (err) => {
         this.errorMsgs = err.error.validationErrors;

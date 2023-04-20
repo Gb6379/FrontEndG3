@@ -10,6 +10,8 @@ import { SuccessComponent } from './success/success.component';
 import { InformacaoUsuarioComponent } from './informacao-usuario/informacao-usuario.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },
   { path: 'Produto', component: ProdutoComponent},
-  { path: 'Categoria', component: CategoriaComponent}
+  { path: 'Categoria', component: CategoriaComponent},
+  { path: 'Endereco', component: EnderecoComponent},
+  {path:  'EnderecoList', component: EnderecoListComponent}
 ];
 
 @NgModule({

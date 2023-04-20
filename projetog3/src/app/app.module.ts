@@ -22,6 +22,8 @@ import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { CategoriaComponent } from './categoria/categoria.component';
     InformacaoUsuarioComponent,
     ProdutoComponent,
     CategoriaComponent,
+    EnderecoComponent,
+    EnderecoListComponent,
   ],
   imports: [
     BrowserModule,

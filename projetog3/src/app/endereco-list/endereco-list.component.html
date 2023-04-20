@@ -1,0 +1,60 @@
+<div>
+
+    <h2 class="mb-3">My contacts</h2>
+    <div class="d-flex justify-content-end mb-3 border-bottom pb-3">
+      <button type="button" class="btn btn-success" (click)="newContact()">
+        <em class="fas fa-plus-square">&nbsp;</em>
+        New contact
+      </button>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Rua</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">Cep</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Estado</th>
+        <th scope="col" class="text-center"><em class="fas fa-cogs"></em></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let endereco of endereco">
+        <td>{{ endereco.street }}</td>
+        <td>{{ endereco.neighborhood}}</td>
+        <td>{{ endereco.cep }}</td>
+        <td>{{ endereco.city }}</td>
+        <td>{{ endereco.state }}</td>
+        <td class="text-center">
+          <em class="fas fa-pencil cursor-pointer" style="color: #0d6efd;" (click)="editAddress(endereco.id)">&nbsp;</em>
+          <span>&nbsp;|&nbsp;</span>
+          <em class="fas fa-trash cursor-pointer" style="color: #dc3545;" (click)="delete(endereco.id)" data-bs-toggle="modal" data-bs-target="#deleteModal">&nbsp;</em>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm delete</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         Deseja mesmo deletar o endereco
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelDelete()">
+            <em class="fas fa-times"></em>&nbsp;Close
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmDelete()">
+            <em class="fas fa-trash"></em>&nbsp;Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

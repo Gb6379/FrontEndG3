@@ -1,0 +1,44 @@
+h3{
+    text-align: center;
+    color: black;
+    margin-top: 20%;
+  }
+
+  .box{
+    width: 70%;
+    position: relative;
+    top: 10%;
+    left: 5.3rem;
+  }
+
+  .margem-superior{
+    width: 40%;
+  }
+
+  
+  #telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf, #lastname, #cidade{
+    width: 235px;
+  }
+
+  
+button{
+    width: 50%;
+    height: 2.75rem;
+  }
+  
+  .button:hover{
+    opacity: 0.75;
+    transition: 0.75s;
+  }
+  
+  .cadastrar{
+    background: red;
+    color: white;
+    border: none;
+  }
+  
+  .cancelar{
+    background: white;
+    color: red;
+    border: 1px solid red;
+  }
