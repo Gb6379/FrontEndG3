@@ -12,6 +12,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,10 +23,11 @@ const routes: Routes = [
   { path: 'ShoppingCart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },
-  { path: 'Produto', component: ProdutoComponent},
-  { path: 'Categoria', component: CategoriaComponent},
-  { path: 'Cadastro-Restaurante', component: CadastroRestauranteComponent},
-  { path: 'Login-restaurante', component: LoginEmpresaComponent}
+  { path: 'Produto', component: ProdutoComponent },
+  { path: 'Categoria', component: CategoriaComponent },
+  { path: 'Cadastro-Restaurante', component: CadastroRestauranteComponent },
+  { path: 'Login-restaurante', component: LoginEmpresaComponent },
+  { path: 'Payment', component: PaymentComponent },
 ];
 
 @NgModule({

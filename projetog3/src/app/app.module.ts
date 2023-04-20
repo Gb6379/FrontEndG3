@@ -23,10 +23,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { DialogModule } from 'primeng/dialog';
-import {ButtonModule} from 'primeng/button';
-import {AccordionModule} from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { AccordionModule } from 'primeng/accordion';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
+import { PaymentComponent } from './payment/payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
     CategoriaComponent,
     CadastroRestauranteComponent,
     LoginEmpresaComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
     DialogModule,
     ButtonModule,
     AccordionModule,
-
+    NgxPayPalModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

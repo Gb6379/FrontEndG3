@@ -75,6 +75,6 @@ export class ShoppingCartComponent implements OnInit {
 
   checkout() {
     localStorage.setItem('cart_total', JSON.stringify(this.total));
-    this.router.navigate(['/payment']);
+    this.router.navigate(['/Payment']);
   }
 }
