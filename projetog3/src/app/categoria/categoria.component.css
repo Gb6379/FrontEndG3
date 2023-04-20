@@ -1,0 +1,14 @@
+.cadastrar{
+  background: red;
+  color: white;
+  border: none;
+}
+.cancelar{
+  background: white;
+  color: red;
+  border: 1px solid red;
+}
+.button:hover{
+  opacity: 0.75;
+  transition: 0.75s;
+}

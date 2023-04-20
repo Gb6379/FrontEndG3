@@ -27,6 +27,7 @@ import {ButtonModule} from 'primeng/button';
 import {AccordionModule} from 'primeng/accordion';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
     DialogModule,
     ButtonModule,
     AccordionModule,
-
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],

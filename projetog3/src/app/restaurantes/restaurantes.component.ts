@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
+import { Empresa } from '../model/Empresa';
+import { TesteEmpresa } from '../model/TesteEmpresa';
 
 @Component({
   selector: 'app-restaurantes',
@@ -8,17 +10,29 @@ import { ApiService } from '../service/api.service';
 })
 export class RestaurantesComponent implements OnInit {
 
-restaurantes: any;
-constructor(private apiservice: ApiService){}
+  restaurantes: any;
+  empresa: TesteEmpresa[] = [
+    {
+      name: 'teste',
+      categoria: 'teste'
+    },
+    {
+      name: 'teste2',
+      categoria: 'teste2'
+    }
+  ];
+  displayedColuns = ['name','categoria']
 
-ngOnInit() {
-  this.getAllRestaurantes();
-}
+  constructor(private apiservice: ApiService){
+  }
 
-getAllRestaurantes() {
-  this.apiservice.getAllData().subscribe((res)=>{
-    this.restaurantes = res.data;
-  });
-}
+  ngOnInit() {
+    this.getAllRestaurantes();
+  }
 
+  getAllRestaurantes() {
+    this.apiservice.getAllData().subscribe((res)=>{
+      this.restaurantes = res.data;
+    });
+  }
 }

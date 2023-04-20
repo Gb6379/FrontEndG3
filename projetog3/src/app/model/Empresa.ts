@@ -1,5 +1,4 @@
 export interface Empresa {
-
   id: String;
   cnpj: String;
   email: String;
@@ -7,5 +6,4 @@ export interface Empresa {
   password: String;
   phone: String;
   role: String;
-
 }

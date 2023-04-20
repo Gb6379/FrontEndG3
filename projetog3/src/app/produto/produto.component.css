@@ -1,0 +1,34 @@
+.margem-superior{
+  width: 40%;
+}
+.cadastrar{
+  background: red;
+  color: white;
+  border: none;
+}
+.cancelar{
+  background: white;
+  color: red;
+  border: 1px solid red;
+}
+.button:hover{
+  opacity: 0.75;
+  transition: 0.75s;
+}
+#teste{
+  display: flex;
+}
+.box{
+  width: 70%;
+  position: relative;
+  top: 10%;
+  left: 5.3rem;
+}
+
+.informacao{
+  display: flex;
+  justify-content: space-between;
+}
+#Valor{
+width: 170%;
+}
