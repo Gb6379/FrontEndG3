@@ -29,6 +29,9 @@ import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-re
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { DropdownModule } from 'primeng/dropdown';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CadastroRestauranteComponent,
     LoginEmpresaComponent,
     PaymentComponent,
+    EnderecoComponent,
+    EnderecoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +71,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     ButtonModule,
     AccordionModule,
     NgxPayPalModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

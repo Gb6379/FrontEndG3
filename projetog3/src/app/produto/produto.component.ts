@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
-  constructor() { }
+  cities: any[];
+
+  selectedCityCode: string;
+
+  constructor() {
+    this.cities = [
+      {name: 'Bebidas', code: 'Bebidas'},
+      {name: 'Refeições', code: 'Refeicoess'},
+  ];
+  this.selectedCityCode = ""
+  }
 
   ngOnInit(): void {
   }

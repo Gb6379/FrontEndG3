@@ -1,0 +1,35 @@
+<div class="container margem-superior">
+    <div class="form-group box">
+        <h3>Onde voce quer receber seu pedido</h3>
+        <br>
+        <span class="p-float-label">
+            <input type="text" class="form-control" id="cep" name="cep" pInputText>
+            <label for="cep">CEP</label>
+          </span>
+          <span class="p-float-label">
+          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" disabled pInputText>
+          <label for="bairro">Bairro</label>
+        </span>
+        
+        &nbsp;
+          <span class="p-float-label">
+           <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua" disabled pInputText>
+           <label for="logradouro">Rua</label>
+          </span>
+          <span class="p-float-label">
+            <input type="text" class="form-control" id="numero" name="numero" pInputText>
+            <label for="numero">Número</label>
+          </span>
+        &nbsp;
+          <span class="p-float-label">
+          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" disabled pInputText>
+          <label for="cidade">Cidade</label>
+        </span>
+        <br>
+        <div class="informacao">   
+            <button class="btn btn-secondary button cadastrar" (click)="save()"> Salvar </button>
+            &nbsp;  
+            <button class="btn btn-primary button cancelar" (click)="cancel()"> Cancelar </button> <!-- provisóriamente sem validação -->
+        </div>
+    </div>
+</div>

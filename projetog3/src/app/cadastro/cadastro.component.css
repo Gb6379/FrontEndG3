@@ -1,6 +1,3 @@
-.conteudo{
-}
-
 .margem-superior{
   width: 40%;
 }
@@ -27,7 +24,7 @@ h5{
 }
 
 .box{
-  width: 70%;
+  width: 50%;
   position: relative;
   top: 10%;
   left: 5.3rem;
@@ -37,14 +34,12 @@ label{
   font-weight: 600;
 }
 
-
-
 .informacao{
   display: flex;
   justify-content: space-between;
 }
 
-#telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf{
+#telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf, #lastname{
   width: 235px;
 }
 
