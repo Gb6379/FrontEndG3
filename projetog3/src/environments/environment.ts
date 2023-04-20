@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   Client_ID:
-    'AfRdDCfUoQG-FZTY6z3-02s2RPbvn37HWjp_8J3OsAYhFGLYFgENC_a2GQTHb_l1S9u_uL2yazopBxgv',
+    'AcQPWBxLfr_pIv9wizqJSSljWf0ONU8l_s9mJGoK-0dHJVLW-dG5RzP3veoUsQLSIEzit-YUu-ebbauA',
 };
 
 /*
