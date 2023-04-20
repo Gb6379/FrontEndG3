@@ -28,6 +28,8 @@ import {AccordionModule} from 'primeng/accordion';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
 import {DropdownModule} from 'primeng/dropdown';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {DropdownModule} from 'primeng/dropdown';
     CategoriaComponent,
     CadastroRestauranteComponent,
     LoginEmpresaComponent,
+    EnderecoComponent,
+    EnderecoListComponent,
   ],
   imports: [
     BrowserModule,

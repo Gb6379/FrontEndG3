@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
-import { Empresa } from '../model/Empresa';
 import { TesteEmpresa } from '../model/TesteEmpresa';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TokenStorageService } from '../service/token-storage.service';
+//import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-restaurantes',
@@ -23,16 +24,25 @@ export class RestaurantesComponent implements OnInit {
   ];
   displayedColuns = ['name','categoria']
 
-  constructor(private apiservice: ApiService){
+  constructor(
+    private router: Router,
+    //private restauranteService: RestauranteService,
+    private tokenService: TokenStorageService,
+    private activatedRoute: ActivatedRoute
+  ){
   }
 
   ngOnInit() {
-    this.getAllRestaurantes();
+    //this.getAllRestaurantes();
   }
 
-  getAllRestaurantes() {
-    this.apiservice.getAllData().subscribe((res)=>{
-      this.restaurantes = res.data;
-    });
-  }
+
+
+/*getAllRestaurantes() {
+  this.apiservice.getAllData().subscribe((res)=>{
+    this.restaurantes = res.data;
+  });
+}*/
+
+
 }
