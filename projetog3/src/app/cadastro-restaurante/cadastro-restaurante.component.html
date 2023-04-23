@@ -6,31 +6,31 @@
         <h5>Preencha seus dados de cadastro</h5>
 
         <span class="p-float-label">
-          <input type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
+          <input [(ngModel)] = "registerRequest.name" type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
           <label for="usuario">Nome</label>
         </span>
         &nbsp;
         <br>
         <span class="p-float-label">
-          <input type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
+          <input [(ngModel)] = "registerRequest.cnpj" type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
           <label for="cpf">CNPJ</label>
         </span>
         &nbsp;
         <br>
         <div class="informacao">
           <span class="p-float-label">
-            <input type="text" class="form-control" id="telefone" name="telefone" pInputText>
+            <input [(ngModel)] = "registerRequest.phone" type="text" class="form-control" id="telefone" name="telefone" pInputText>
             <label for="telefone">Telefone</label>
           </span>
           <span class="p-float-label">
-            <input type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
+            <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
             <label for="email">Email</label>
           </span>
         </div>
         &nbsp;
         <div class="informacao">
         <span class="p-float-label">
-          <p-password [toggleMask]="true" id="senha" formControlName="password"></p-password>
+          <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha" formControlName="password"></p-password>
           <label for="password">Senha</label>
         </span>
         <span class="p-float-label">
@@ -66,7 +66,7 @@
           <label for="cidade">Cidade</label>
         </span>
         <br>
-        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR RESTAURANTE </button>
+        <button class="btn btn-secondary button cadastrar" (click)="register()"> CADASTRAR RESTAURANTE </button>
         &nbsp;
         <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>
