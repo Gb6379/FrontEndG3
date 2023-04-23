@@ -1,9 +1,10 @@
-  <div class="container margem-superior">
+<form class="conteudo">
+ <div class="container margem-superior">
     <div class="form-group box">
       <img class="logo" src="../../assets/imagens/pyyg-PhotoRoom.png-PhotoRoom.png" alt="ifood-logo">
       <h3>Cadastra-se</h3>
         <h5>Preencha seus dados de cadastro</h5>
-      
+
         <span class="p-float-label">
           <input [(ngModel)] = "registerRequest.firstname" type="text" class="form-control" id="nome" name="firstname" pInputText>
           <label for="firstname">Nome</label>
@@ -20,34 +21,38 @@
           <input [(ngModel)] = "registerRequest.cpf"  type="text" class="form-control" id="cpf" name="cpf" pInputText>
           <label for="cpf">CPF</label>
         </span>
-      
+
         &nbsp;
         <br>
-        
+
+        <div class="informacao">
           <span class="p-float-label">
             <input [(ngModel)] = "registerRequest.phone" type="text" class="form-control" id="telefone" name="phone" pInputText>
             <label for="phone">Telefone</label>
           </span>
           <span class="p-float-label">
             <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" pInputText>
-            <label for="email">Email</label>
+            <label id="email" for="email">Email</label>
           </span>
-       
+        </div>
         &nbsp;
-        
-        <span class="p-float-label">
-          <input [(ngModel)] = "registerRequest.password" id="senha" class="form-control" pInputText>
-          <label for="senha">Senha</label>
-        </span>
-        <span class="p-float-label">
-          <input  id="senha" class="form-control" pInputText>
-          <label for="senha">Confirmação de senha</label>
-        </span>
-        
+
+        <div class="informacao">
+          <span class="p-float-label">
+            <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true"></p-password>
+            <label for="senha">Senha</label>
+          </span>
+          <span class="p-float-label">
+            <p-password id="confirmaSenha" [toggleMask]="true"></p-password>
+            <label id="confirmaSenha" for="confirmaSenha">Confirmação de senha</label>
+          </span>
+        </div>
+
         &nbsp;
-        
+
         <button class="btn btn-secondary button cadastrar" (click)="register()"> CADASTRAR </button>
         &nbsp;
-        <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
+        <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button>
     </div>
   </div>
+</form>

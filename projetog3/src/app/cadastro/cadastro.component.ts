@@ -19,15 +19,15 @@ export class CadastroComponent {
 
 
   constructor(
-    private cepService: CepServiceService, 
-    private formBuilder: FormBuilder, 
+    private cepService: CepServiceService,
+    private formBuilder: FormBuilder,
     private service: DadosService,
 
     private router: Router,
     private authService: AuthService,
     private tokenService: TokenStorageService
 
-    
+
     ) {
 
    }
@@ -36,26 +36,12 @@ export class CadastroComponent {
     this.router.navigate(['login']);
   }
 
-  consultaCep(valor: any, form: any){
-    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,form));
-  }
-
-  populaForm(dados:any, form: FormControl){
-    form.setValue({
-      cep: dados.cep,
-      logradouro: dados.logradouro,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      uf: dados.uf
-    })
-  }
-
   register() {
     this.errorMsgs = [];
     this.authService.register({
       body: this.registerRequest
     }).subscribe({
-      next: (res) => { 
+      next: (res) => {
         this.tokenService.saveResponse(res);
         this.router.navigate(['Login'])
       },
@@ -64,9 +50,4 @@ export class CadastroComponent {
       }
     });
   }
-
- /* onSubmit(){
-    this.service.save(this.form.value).subscribe(data => console.log(data));
-  }*/
-
 }

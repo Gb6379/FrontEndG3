@@ -24,7 +24,7 @@ h5{
 }
 
 .box{
-  width: 50%;
+  width: 70%;
   position: relative;
   top: 10%;
   left: 5.3rem;
@@ -36,11 +36,14 @@ label{
 
 .informacao{
   display: flex;
-  justify-content: space-between;
 }
 
-#telefone, #email, #cep, #bairro, #logradouro, #numero, #nome, #cpf, #lastname{
+#telefone, #email{
   width: 235px;
+}
+
+#email, #confirmaSenha{
+  margin-left: 40px;
 }
 
 button{
