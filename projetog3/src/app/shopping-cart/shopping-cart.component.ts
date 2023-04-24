@@ -1,6 +1,9 @@
+import { Product } from './../model/Product';
+import { Carrinho } from './../model/Carrinho';
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../service/shopping-cart.service';
 import { Router } from '@angular/router';
+import { CarrinhoItem } from '../model/CarrinhoItem';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,9 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./shopping-cart.component.css'],
 })
 export class ShoppingCartComponent implements OnInit {
-  productList!: any[];
-  products: any[] = [];
-  subTotal!: any;
+  productList!: Carrinho;
+  products: any;
+  idUser: any;
 
   constructor(
     private shopping_cart: ShoppingCartService,
@@ -18,7 +21,8 @@ export class ShoppingCartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.shopping_cart.getAllProducts().subscribe({
+    this.idUser = localStorage.getItem('userId');
+    this.shopping_cart.findById1({ user_id: Number(this.idUser) }).subscribe({
       next: (res: any) => {
         console.log(res);
         this.productList = res;
@@ -30,51 +34,50 @@ export class ShoppingCartComponent implements OnInit {
         console.log('Request Completed');
       },
     });
+    this.total();
 
-    this.shopping_cart.loadCart();
-    this.products = this.shopping_cart.getProduct();
+    this.products = this.productList.cartItems;
   }
 
   //Add product to Cart
   addToCart(product: any) {
-    if (!this.shopping_cart.productInCart(product)) {
-      product.quantity = 1;
-      this.shopping_cart.addToCart(product);
-      this.products = [...this.shopping_cart.getProduct()];
-      this.subTotal = product.price;
-    }
+    this.shopping_cart.addItem({ product_id: product.id });
+    this.shopping_cart
+      .findById1({
+        user_id: Number(this.idUser),
+      })
+      .subscribe((carrinho) => {
+        this.products = carrinho;
+      });
   }
-
-  //Change sub total amount
-  // changeSubTotal(product: any, index: any) {
-  //   const qty = product.quantity;
-  //   const amt = product.price;
-
-  //   this.subTotal = amt * qty;
-
-  //   this.product_service.saveCart();
-  // }
 
   //Remove a Product from Cart
   removeFromCart(product: any) {
-    this.shopping_cart.removeProduct(product);
-    this.products = this.shopping_cart.getProduct();
+    this.shopping_cart.removeItemCart({ product_id: product.id });
+    this.shopping_cart
+      .findById1({
+        user_id: Number(this.idUser),
+      })
+      .subscribe((carrinho) => {
+        this.products = carrinho;
+      });
   }
 
   //Calculate Total
-
-  get total() {
-    return this.products?.reduce(
-      (sum, product) => ({
-        quantity: 1,
-        price: sum.price + product.quantity * product.price,
-      }),
-      { quantity: 1, price: 0 }
-    ).price;
+  total() {
+    if (this.productList.cartItems === undefined) {
+    } else {
+      this.productList.cartItems!.forEach((item) => {
+        this.productList.totalCost! += item.product!.price! * item.quantity!;
+      });
+    }
   }
 
   checkout() {
-    localStorage.setItem('cart_total', JSON.stringify(this.total));
+    localStorage.setItem(
+      'cart_total',
+      JSON.stringify(this.productList.totalCost)
+    );
     this.router.navigate(['/Payment']);
   }
 }
