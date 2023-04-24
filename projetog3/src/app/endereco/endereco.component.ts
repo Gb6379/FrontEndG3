@@ -1,9 +1,12 @@
+import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnderecoService } from '../service/endereco.service';
 import { TokenStorageService } from '../service/token-storage.service';
 import { EnderecoRequest } from '../model/EnderecoRequest';
 import { Endereco } from '../model/Endereco';
+import { CepServiceService } from '../service/cep-service.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-endereco',
@@ -23,8 +26,9 @@ export class EnderecoComponent implements OnInit {
     private router: Router,
     private enderecoService: EnderecoService,
     private tokenService: TokenStorageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
 
+    private cepService: CepServiceService
   ) { }
 
 
@@ -72,4 +76,17 @@ export class EnderecoComponent implements OnInit {
     }
   }
 
+  consultaCep(valor: any, form: any){
+    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,form));
+  }
+
+  populaForm(dados:any, form: FormControl){
+    form.setValue({
+      cep: dados.cep,
+      logradouro: dados.logradouro,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      uf: dados.uf
+    })
+  }
 }
