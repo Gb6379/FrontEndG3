@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CepServiceService } from '../service/cep-service.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DadosService } from '../service/dados.service';
 import { RegisterRequestRestaurante } from '../model/register-request-restaurante';
 import { Router } from '@angular/router';
@@ -19,27 +19,29 @@ export class CadastroRestauranteComponent implements OnInit {
   registerRequest: RegisterRequestRestaurante = {name: '', cnpj: '',phone: '', email:'', password: ''};
   errorMsgs: string[] = [];
 
-  form: FormGroup;
+  formulario!: FormGroup;
 
   constructor(
-    private cepService: CepServiceService, 
-    private formBuilder: FormBuilder, 
+    private cepService: CepServiceService,
+    private formBuilder: FormBuilder,
     private service: DadosService,
 
     private router: Router,
     private authService: AuthService,
     private tokenService: TokenStorageService
-    ) 
+    )
     {
-    this.form = this.formBuilder.group({
-      name: [null],
-      cnpj: [null],
-      email: [null],
-      password: [null],
-    })
+
    }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      cnpj: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
   }
 
 
@@ -52,37 +54,13 @@ export class CadastroRestauranteComponent implements OnInit {
     this.authService.registerResta({
       body: this.registerRequest
     }).subscribe({
-      next: (res) => { 
+      next: (res) => {
         this.tokenService.saveResponse(res);
-        this.router.navigate(['Login'])
+        this.router.navigate(['Endereco'])
       },
       error: (err) => {
         this.errorMsgs = err.error.validationErrors;
       }
     });
   }
-
-  consultaCep(valor: any, form: any){
-    this.cepService.buscar(valor).subscribe({
-      next: (data) => {
-        this.endereco.push(data);//need a fix. Endpoint returns a json object, therefor the object initializer need to receive a json
-      }
-    });
-  }
-
-
-  populaForm(dados:any, form: FormControl){
-    form.setValue({
-      cep: dados.cep,
-      logradouro: dados.logradouro,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      uf: dados.uf
-    })
-  }
-
-  onSubmit(){
-    this.service.save(this.form.value).subscribe(data => console.log(data));
-  }
-
 }

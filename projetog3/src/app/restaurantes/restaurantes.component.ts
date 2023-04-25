@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TesteEmpresa } from '../model/TesteEmpresa';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from '../service/token-storage.service';
-//import { ApiService } from '../service/api.service';
+import { ApiConfigurationService } from '../service/api-configuration.service';
+import { Empresa } from '../model/Empresa';
+import { EmpresaServiceService } from '../service/empresa-service.service';
+/*import { ApiService } from '../service/api.service'; */
 
 @Component({
   selector: 'app-restaurantes',
@@ -11,7 +14,7 @@ import { TokenStorageService } from '../service/token-storage.service';
 })
 export class RestaurantesComponent implements OnInit {
 
-  restaurantes: any;
+  restaurantes: Empresa [] = [];
   empresa: TesteEmpresa[] = [
     {
       name: 'teste',
@@ -28,21 +31,20 @@ export class RestaurantesComponent implements OnInit {
     private router: Router,
     //private restauranteService: RestauranteService,
     private tokenService: TokenStorageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private empresaService: EmpresaServiceService
   ){
   }
 
   ngOnInit() {
-    //this.getAllRestaurantes();
+    this.getAllRestaurantes();
   }
 
-
-
-/*getAllRestaurantes() {
-  this.apiservice.getAllData().subscribe((res)=>{
-    this.restaurantes = res.data;
-  });
-}*/
-
-
+  getAllRestaurantes() {
+    this.empresaService.findAll().subscribe({
+      next: (data) => {
+        console.log('Teste');
+      }
+    })
+  }
 }

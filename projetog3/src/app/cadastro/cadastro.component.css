@@ -35,10 +35,8 @@ label{
   font-weight: 600;
 }
 
-
-#telefone, #email, #numero, #nome, #cpf, #lastname, #senha{
-  width: 350px;
-  align-items: center;
+.informacao{
+  display: flex;
 }
 
 :host ::ng-deep .p-password-input {
@@ -66,4 +64,7 @@ button{
   background: white;
   color: red;
   border: 1px solid red;
+}
+.erro{
+  margin-top: 2px;
 }
