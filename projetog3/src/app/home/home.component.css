@@ -4,7 +4,7 @@ body{
     height:20rem;
 }
 
-.flex-conteudo{
+.flex-gabs-conteudo{
     display: flex;
     flex-direction: column;
 }
@@ -27,10 +27,6 @@ img {
 
 img:hover{
     transform: scale(1.06);
-}
-
-.container-buscar {
-  margin-left: 20rem;
 }
 
 .conteudo{
@@ -115,16 +111,16 @@ img:hover{
     bottom: 1rem;
 }
 
-.row{
+.row-gabs{
     width: 100%;
     margin: 0  0 1rem -7rem ;
 }
 
-.row-baixo{
+.row-gabs-baixo{
     margin-left: 25.5rem;
 }
 
-.footer{
+.footer-gabs{
     border-top: 1px solid black;
     margin: 1rem 0 0 0;
     width: 95%;

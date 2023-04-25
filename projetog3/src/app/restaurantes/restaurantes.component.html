@@ -1,21 +1,24 @@
-<div class="container margem-superior">
-  <div class="card">
-    <h5>Restaurantes</h5>
-    <p-table [value]="restaurantes" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="header">
-            <tr>
-              <th>Nome</th>
-              <th>Categoria</th>
-              <th>Comprar</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-restaurantes>
-            <tr>
-              <td>{{restaurantes.name}}</td>
-              <td>{{restaurantes.categoria}}</td>
-              <td><button icon="pi pi-arrow-right" pButton class="Restaurante button"><a routerLink="/ShoppingCart"style="color: white">Comprar</a></button></td>
-            </tr>
-        </ng-template>
-    </p-table>
-  </div>
+<div class="margem-superior">
+  <span class="titulo">Restaurantes</span>
+  <div class="restaurantes">
+  <p-table [value]="restaurantes">
+    <ng-template pTemplate="body" let-restaurantes>
+
+        <tr>
+          <div class="restaurantes-individual">
+          <div style="display: flex; padding: 0.25rem 1rem 0 0;">
+            <div>
+                <img alt="Card" src="assets/imagens/feijoada.jpg" class="img-restaurantes">
+            </div>
+            <div style="margin-left: 1rem;">
+                <span><strong>{{restaurantes.name}}</strong></span>
+            </div>
+          </div>
+          <button pButton class="btn-add" label="Comprar" icon="pi pi-arrow-up-right" (click)="goToProduct()"></button>
+        </div>
+        </tr>
+
+    </ng-template>
+  </p-table>
+</div>
 </div>

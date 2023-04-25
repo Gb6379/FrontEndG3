@@ -1,57 +1,62 @@
-<div class="flex-conteudo">
-  <div>
-      <body>
-          <div class="conteudo">
-              <p class="tittle-principal"><b> Tudo pra facilitar seu dia a dia </b></p>
-              <p class="tittle-secundario">O que você precisa está aqui. Peça e receba onde estiver.</p>
-
-              <div class="container-buscar">
-                  <div class="row input-buscar">
-                      <div class="col-md-8">
-                          <span class="material-icons icon-placeholder">fmd_good</span>
-                          <input type="text" class="form-control search-bar" placeholder="Endereço de entrega e número">
-                      </div>
-                      <div class="col-md-1">
-                          <button class="button-red"> Buscar </button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </body>
-  </div>
-
-  <!-- imagens com links -->
-  <div class="container img-link-cima">
-      <div class="row row">
-          <div class="col-md-12">
-              <a href=""><img class="img-cima" src="../../assets/imagens/comida-japonesa.jpg"></a>
-              <a href=""><img class="img-cima" src="../../assets/imagens/comida-japonesa.jpg"></a>
-          </div>
-      </div>
-  </div>
-
+<div class="flex-gabs-conteudo">
+    <div>
+        <body>
+            <div class="conteudo">
+                <p class="tittle-principal"><b> Tudo pra facilitar seu dia a dia </b></p>
+                <p class="tittle-secundario">O que você precisa está aqui. Peça e receba onde estiver.</p>
+        
+                <div class="container">
+                    <div class="row input-buscar">
+                        <div class="col-md-8">
+                            <span class="material-icons icon-placeholder">fmd_good</span>
+                            <input type="text" class="form-control search-bar" placeholder="Endereço de entrega e número">
+                        </div>
+                        <div class="col-md-1">
+                            <button class="button-red"> Buscar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>    
+    </div>
+    
+    <!-- imagens com links -->
+    <div class="container img-link-cima"> 
+        <div class="row row-gabs">
+            <div class="col-md-12">
+                <a href=""><img class="img-cima" src="../../assets/imagens/comida-japonesa.jpg"></a>
+                <a href=""><img class="img-cima" src="../../assets/imagens/comida-japonesa.jpg"></a>
+            </div>
+        </div>
+    </div>
+    
 </div>
 
-<div class="container img-link-baixo">
-  <div class="row row-baixo">
-      <div class="col-md-12">
-          <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
-          <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
-          <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
-      </div>
-
-  </div>
+<div class="container img-link-baixo"> 
+    <div class="row row-gabs-baixo">
+        <div class="col-md-12">
+            <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
+            <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
+            <a href=""><img class="img-baixo" src="../../assets/imagens/feijoada.jpg"></a>
+        </div>
+        
+    </div>
 </div>
+
+<!-- isso não se usa mais '-''
+<hr size="1" width="95%" noshade class="linha">
+-->
+
 <div class="container">
-  <div class="footer">
-      <div><h4> Os melhores restaurantes </h4></div>
-      <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/comida-japonesa.jpg"></ng-template>
-          <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/feijoada.jpg"></ng-template>
-          <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/pure-frango.jpg"></ng-template>
-          <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/hamburger.jpg"></ng-template>
-          <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/salada.jpg"></ng-template>
-      </owl-carousel-o>
-  </div>
-  <br>
+    <div class="footer-gabs">
+        <div><h4>Categorias</h4></div>
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/comida-japonesa.jpg">Japonesa</ng-template>  
+            <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/feijoada.jpg">Brasileira</ng-template>  
+            <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/pure-frango.jpg">Saudavel</ng-template>
+            <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/hamburger.jpg">Fast food</ng-template>
+            <ng-template carouselSlide><img class="img-carousel" src="../../assets/imagens/salada.jpg">Saladas</ng-template>
+        </owl-carousel-o>
+    </div>
+    <br>
 </div>

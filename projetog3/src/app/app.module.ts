@@ -34,6 +34,8 @@ import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
+import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import {MessageModule} from 'primeng/message';
     PaymentComponent,
     EnderecoComponent,
     EnderecoListComponent,
+    AcompanhamentoComponent,
+    ListaProdutosComponent,
   ],
   imports: [
     BrowserModule,

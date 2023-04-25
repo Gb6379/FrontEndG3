@@ -43,8 +43,12 @@ export class RestaurantesComponent implements OnInit {
   getAllRestaurantes() {
     this.empresaService.findAll().subscribe({
       next: (data) => {
-        console.log('Teste');
+        this.restaurantes = data
       }
     })
+  }
+
+  goToProduct(){
+    this.router.navigate(['Lista-produtos'])
   }
 }

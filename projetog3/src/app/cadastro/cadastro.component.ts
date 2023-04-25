@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CepServiceService } from '../service/cep-service.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DadosService } from '../service/dados.service';
 import { RegisterRequest } from '../model/register-request';
 import { Router } from '@angular/router';
@@ -39,7 +39,7 @@ export class CadastroComponent {
       cpf: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 

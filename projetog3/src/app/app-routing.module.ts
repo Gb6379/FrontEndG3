@@ -15,6 +15,8 @@ import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
 import { PaymentComponent } from './payment/payment.component';
 import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
+import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
+import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'Payment', component: PaymentComponent },
   { path: 'Endereco', component: EnderecoComponent },
   { path: 'EnderecoList', component: EnderecoListComponent },
+  { path: 'Acompanhamento', component: AcompanhamentoComponent },
+  { path: 'Lista-produtos', component: ListaProdutosComponent }
 ];
 
 @NgModule({

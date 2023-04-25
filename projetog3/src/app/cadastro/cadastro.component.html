@@ -55,7 +55,7 @@
       </div>
       <div class="mt-4">
         <span class="p-float-label">
-          <p-password type="text" id="confirmaSenha" name="confirmaSenha" [toggleMask]="true"></p-password>
+          <p-password type="text" id="confirmaSenha" name="confirmaSenha" [toggleMask]="true" formControlName="confirmPassword"></p-password>
           <label id="confirmaSenha" for="confirmaSenha">Confirmação de senha</label>
         </span>
     </div>
@@ -65,6 +65,6 @@
 
     <button class="btn btn-secondary button cadastrar" (click)="register()" [disabled]="!formulario.valid"> CADASTRAR </button>
     &nbsp;
-    <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button>
+    <button class="btn btn-primary button cancelar" type="reset"> LIMPAR DADOS </button>
     </div>
   </div>
