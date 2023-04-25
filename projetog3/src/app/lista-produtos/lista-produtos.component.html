@@ -1,41 +1,39 @@
 <div class="container">
-    <div class="dados-restaurante">
-        <p-card header="PYGG Restaurante" subheader="Brasileira" [style]="{width: '35vh'}" styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="assets/imagens/pyyg.png">
-            </ng-template>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-            </p>
 
-            <ng-template pTemplate="footer">
-                <p>⭐⭐⭐⭐⭐</p>
-            </ng-template>
+  <div class="dados-restaurante">
+    <p-table [value]="empresa" style="border: none;">
+      <ng-template pTemplate="body" let-empresa>
+        <tr><td style="padding: 0;"><img alt="Card" src="assets/imagens/pyyg.png" class="img-restaurante"></td> </tr>
+        <tr><td style="border: none; border-width: 0; padding-bottom: 0;"><h4><strong>{{empresa.name}}</strong></h4></td></tr>
+        <tr><td style="border: none; border-width: 0; padding-top: 0;"><h5>{{empresa.phone}}</h5></td></tr>
+        <tr><td style="border: none; border-width: 0;"><p>{{empresa.email}}</p></td></tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p style="margin: 0.75rem;">⭐⭐⭐⭐⭐</p>
+      </ng-template>
+    </p-table>
+  </div>
 
-        </p-card>
-    </div>
 
-
-    <div class="comidas">
-          <p-table [value]="product">
-            <ng-template pTemplate="body" let-product>
-                <tr>
-                  <div class="comida-individual">
-                  <div style="display: flex; padding: 0.25rem 1rem 0 0;">
-                    <div>
-                        <img alt="Card" src="assets/imagens/feijoada.jpg" class="img-comida">
-                    </div>
-                    <div style="margin-left: 1rem;">
-                        <span><strong>{{product.name}}</strong></span><br>
-                        <span><strong>{{product.price}}</strong></span><br>
-                        <span>{{product.description}}</span>
-                    </div>
-                  </div>
-                  <button pButton class="btn-add" label="Adicionar ao carrinho" icon="pi pi-plus"></button>
-                </div>
-                </tr>
-
-            </ng-template>
-          </p-table>
-    </div>
+  <div class="comidas">
+    <p-table [value]="product">
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <div class="comida-individual">
+            <div style="display: flex; padding: 0.25rem 1rem 0 0;">
+              <div>
+                <img alt="Card" src="assets/imagens/feijoada.jpg" class="img-comida">
+              </div>
+              <div style="margin-left: 1rem;">
+                <span><strong>{{product.name}}</strong></span><br>
+                <span><strong>{{product.price}}</strong></span><br>
+                <span>{{product.description}}</span>
+              </div>
+            </div>
+            <button pButton class="btn-add" label="Adicionar ao carrinho" icon="pi pi-plus"></button>
+          </div>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>

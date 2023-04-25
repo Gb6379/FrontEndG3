@@ -5,6 +5,7 @@ import { Product } from '../model/Product';
 import { TokenStorageService } from '../service/token-storage.service';
 import { Router } from '@angular/router';
 import { ProductRequest } from '../model/ProductRequest';
+import { Empresa } from '../model/Empresa';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -14,20 +15,14 @@ import { ProductRequest } from '../model/ProductRequest';
 export class ListaProdutosComponent implements OnInit {
 
   product:Product[] = [];
+  empresa:Empresa[] = [];
 
- 
   errorMsgs: string[] = [];
-  private productId?: number;
 
   teste:Teste [] = [{
     nome: 'Feijoada Brasileira',
     valor: 'R$ 45,00',
-    descricao: 'Lorem ipsum dolor sit amet'
-  },
-  {
-    nome: 'Feijoada Brasileira',
-    valor: 'R$ 45,00',
-    descricao: 'Lorem ipsum dolor sit amet'
+    descricao: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet'
   }
   ]
 
@@ -50,6 +45,14 @@ export class ListaProdutosComponent implements OnInit {
     })
   }
 
- 
+  getCompany(){
+    this.productService.findCompanyById1({"company_id": this.tokenService.getUserId}).subscribe({
+      next: (data) => {
+        this.empresa = data;
+        console.log('Teste')
+        console.log(this.tokenService.getUserId)
+      }
+    })
+  }
 
 }

@@ -20,7 +20,7 @@
           <label for="cpf">CNPJ</label>
         </span>
       </div>
-      <div class="erro"><p-message *ngIf="formulario.get('cnpj')?.errors?.['required'] && formulario.get('cnpj')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+      <div class="erro"><p-message *ngIf="formulario.get('cnpj')?.errors?.['required'] && formulario.get('cnpj')?.touched" severity="error" text="CNPJ obrigatório"></p-message></div>
 
 
         <div class="mt-4">
@@ -29,7 +29,7 @@
             <label for="telefone">Telefone</label>
           </span>
         </div>
-        <div class="erro"><p-message *ngIf="formulario.get('phone')?.errors?.['required'] && formulario.get('phone')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+        <div class="erro"><p-message *ngIf="formulario.get('phone')?.errors?.['required'] && formulario.get('phone')?.touched" severity="error" text="Telefone obrigatório"></p-message></div>
 
 
         <div class="mt-4">
@@ -38,7 +38,7 @@
             <label for="email">Email</label>
           </span>
         </div>
-        <div class="erro"><p-message *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+        <div class="erro"><p-message *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched" severity="error" text="Email obrigatório"></p-message></div>
 
         &nbsp;
 

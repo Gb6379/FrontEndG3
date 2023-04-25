@@ -7,6 +7,7 @@ import { StrictHttpResponse } from '../model/strict-http-response';
 import { Product } from '../model/Product';
 import { RequestBuilder } from './request-builder';
 import { ProductRequest } from '../model/ProductRequest';
+import { Empresa } from '../model/Empresa';
 
 @Injectable({
   providedIn: 'root'
@@ -109,5 +110,49 @@ export class ListaProdutosService extends BaseServiceService {
     );
   }
 
+  static readonly findbyid_company_path = '/company/{company_id}';
+
+  findCompanyById1$Response(
+    params: {
+      company_id: number;
+    },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<Array<Empresa>>> {
+    const rb = new RequestBuilder
+    (
+      this.rootUrl,
+      ListaProdutosService.findbyid_company_path + params.company_id,
+      'get'
+    );
+    if (params) {
+      rb.path('company_id', params['company_id'], {});
+    }
+
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'json',
+          accept: 'application/json',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<Array<Empresa>>;
+        })
+      );
+  }
+
+  findCompanyById1(
+    params: {
+      company_id: number;
+    },
+    context?: HttpContext
+  ): Observable<Array<Empresa>> {
+    return this.findCompanyById1$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<Empresa>>) => r.body as Array<Empresa>)
+    );
+  }
 
 }
