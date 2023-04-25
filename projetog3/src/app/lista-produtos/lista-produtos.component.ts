@@ -42,6 +42,7 @@ export class ListaProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCompany();
   }
 
   getProducts() {
@@ -56,14 +57,16 @@ export class ListaProdutosComponent implements OnInit {
       });
   }
 
-  getCompany(){
-    this.productService.findCompanyById1({"company_id": this.tokenService.getUserId}).subscribe({
-      next: (data) => {
-        this.empresa = data;
-        console.log('Teste')
-        console.log(this.tokenService.getUserId)
-      }
-    })
+  getCompany() {
+    this.productService
+      .findCompanyById1({ company_id: this.tokenService.getUserId })
+      .subscribe({
+        next: (data) => {
+          this.empresa = data;
+          console.log('Teste');
+          console.log(this.tokenService.getUserId);
+        },
+      });
   }
 
   addItemToCart(product: Product) {

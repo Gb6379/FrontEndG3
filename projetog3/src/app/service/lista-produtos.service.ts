@@ -10,17 +10,13 @@ import { ProductRequest } from '../model/ProductRequest';
 import { Empresa } from '../model/Empresa';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ListaProdutosService extends BaseServiceService {
+  private readonly API = 'http://localhost:9090/api/company';
 
-  private readonly API = 'http://localhost:9090/api/company'
-
-  constructor(
-    http: HttpClient,
-    config: ApiConfigurationService
-  ) {
-    super(config,http)
+  constructor(http: HttpClient, config: ApiConfigurationService) {
+    super(config, http);
   }
 
   static readonly findbyid_product_path = '/company/products/';
@@ -31,8 +27,7 @@ export class ListaProdutosService extends BaseServiceService {
     },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Array<Product>>> {
-    const rb = new RequestBuilder
-    (
+    const rb = new RequestBuilder(
       this.rootUrl,
       ListaProdutosService.findbyid_product_path + params.company_id,
       'get'
@@ -118,10 +113,9 @@ export class ListaProdutosService extends BaseServiceService {
     },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Array<Empresa>>> {
-    const rb = new RequestBuilder
-    (
+    const rb = new RequestBuilder(
       this.rootUrl,
-      ListaProdutosService.findbyid_company_path + params.company_id,
+      ListaProdutosService.findbyid_company_path,
       'get'
     );
     if (params) {
@@ -154,5 +148,4 @@ export class ListaProdutosService extends BaseServiceService {
       map((r: StrictHttpResponse<Array<Empresa>>) => r.body as Array<Empresa>)
     );
   }
-
 }
