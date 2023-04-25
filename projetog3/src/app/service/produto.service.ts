@@ -7,6 +7,7 @@ import { StrictHttpResponse } from '../model/strict-http-response';
 import { RequestBuilder } from './request-builder';
 import { Product } from '../model/Product';
 import { Categoria } from '../model/Categoria';
+import { ProductRequest } from '../model/ProductRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,8 @@ import { Categoria } from '../model/Categoria';
 export class ProdutoService extends BaseServiceService {
   static readonly find_all_path = '/products';
   static readonly find_all_category_path = '/category';
-  static readonly find_path = '/products/{id}';
-  static readonly save_path: '/products/category/{category_id}';
+  static readonly find_path = '/products/';
+  static readonly save_path: '/products/category/';
 
   constructor(http: HttpClient, config: ApiConfigurationService) {
     super(config, http);
@@ -94,9 +95,9 @@ export class ProdutoService extends BaseServiceService {
       );
   }
 
-  saveProduct(
+  saveProductAndCategory(
     params: {
-      body: Product;
+      body: ProductRequest;
       category_id: any;
       header: any;
     },
@@ -107,13 +108,13 @@ export class ProdutoService extends BaseServiceService {
     );
   }
 
-  save$Response(
-    params: { body: Product; category_id: any; header: any },
+  save$Response(//save product and category
+    params: { body: ProductRequest; category_id: any; header: any },
     context?: HttpContext
   ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      ProdutoService.save_path,
+      ProdutoService.save_path + params.category_id,
       'post'
     );
     if (params) {
@@ -133,7 +134,7 @@ export class ProdutoService extends BaseServiceService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
-          return r as StrictHttpResponse<any>;
+          return r as StrictHttpResponse<Product>;
         })
       );
   }
