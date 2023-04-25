@@ -1,19 +1,18 @@
 <div class="container">
-    <div class="dados-restaurante">
-        <p-card header="PYGG Restaurante" subheader="Brasileira" [style]="{width: '35vh'}" styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="assets/imagens/pyyg.png">
-            </ng-template>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-            </p>
 
-            <ng-template pTemplate="footer">
-                <p>⭐⭐⭐⭐⭐</p>
-            </ng-template>
-
-        </p-card>
-    </div>
+  <div class="dados-restaurante">
+    <p-table [value]="empresa" style="border: none;">
+      <ng-template pTemplate="body" let-empresa>
+        <tr><td style="padding: 0;"><img alt="Card" src="assets/imagens/pyyg.png" class="img-restaurante"></td> </tr>
+        <tr><td style="border: none; border-width: 0; padding-bottom: 0;"><h4><strong>{{empresa.name}}</strong></h4></td></tr>
+        <tr><td style="border: none; border-width: 0; padding-top: 0;"><h5>{{empresa.phone}}</h5></td></tr>
+        <tr><td style="border: none; border-width: 0;"><p>{{empresa.email}}</p></td></tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p style="margin: 0.75rem;">⭐⭐⭐⭐⭐</p>
+      </ng-template>
+    </p-table>
+  </div>
 
 
     <div class="comidas">
@@ -31,7 +30,7 @@
                         <span>{{product.description}}</span>
                     </div>
                   </div>
-                  <button pButton class="btn-add" label="Adicionar ao carrinho" icon="pi pi-plus"></button>
+                  <button pButton class="btn-add" label="Adicionar ao carrinho" (click)="addItemToCart(product)" icon="pi pi-plus"></button>
                 </div>
                 </tr>
 

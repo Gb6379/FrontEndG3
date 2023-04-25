@@ -13,20 +13,33 @@ import { TokenStorageService } from '../service/token-storage.service';
   styleUrls: ['./produto.component.css'],
 })
 export class ProdutoComponent implements OnInit {
-
   categoryList: any;
- 
-  categoria: Categoria[] =[];
 
+  categoria: Categoria[] = [];
+
+<<<<<<< HEAD
   product:Product[] = [];
+=======
+  cities: any[];
 
-  productRequest: ProductRequest = {name: "", price: "", amount: "", companyId:-1, categoryId: -1}
+  selectedCityCode: string;
+
+  product: Product[] = [];
+>>>>>>> 5139705597f61415e05ad7b98437dd1480b6c686
+
+  productRequest: ProductRequest = {
+    name: '',
+    price: '',
+    amount: '',
+    companyId: -1,
+    categoryId: -1,
+  };
   errorMsgs: string[] = [];
   private productId?: number;
 
   constructor(
-     private productService: ListaProdutosService,
-     private produtoService : ProdutoService,
+    private productService: ListaProdutosService,
+    private produtoService: ProdutoService,
     private tokenService: TokenStorageService,
     private router: Router
   ) {
@@ -35,10 +48,10 @@ export class ProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCategories()
+    this.getCategories();
   }
 
- async getCategories(){
+  async getCategories() {
     this.produtoService.findAllCategory({}).subscribe({
       next: (res) => {
         console.log(res);
@@ -68,17 +81,15 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-   save() {
+  save() {
     this.productRequest.companyId = this.tokenService.getUserId;
-    this.productService.saveProduct({body: this.productRequest})
-      .subscribe({
-        next: () => {
-          this.router.navigate(['Lista-produtos']);
-        },
-        error: (err) => {
-          this.errorMsgs = err.error.validationErrors;
-        }
-      });
+    this.productService.saveProduct({ body: this.productRequest }).subscribe({
+      next: () => {
+        this.router.navigate(['Lista-produtos']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-
 }
