@@ -21,7 +21,7 @@ export class ListaProdutosService extends BaseServiceService {
     super(config,http)
   }
 
-  static readonly findbyid_product_path = '/company/{company_id}';
+  static readonly findbyid_product_path = '/company/products/';
 
   findById1$Response(
     params: {
@@ -29,9 +29,10 @@ export class ListaProdutosService extends BaseServiceService {
     },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Product>> {
-    const rb = new RequestBuilder(
+    const rb = new RequestBuilder
+    (
       this.rootUrl,
-      ListaProdutosService.findbyid_product_path,
+      ListaProdutosService.findbyid_product_path + params.company_id,
       'get'
     );
     if (params) {

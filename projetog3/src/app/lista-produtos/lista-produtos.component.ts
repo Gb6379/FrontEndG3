@@ -38,7 +38,9 @@ export class ListaProdutosComponent implements OnInit {
   getProducts(){
     this.productService.findById1({"company_id": this.tokesService.getUserId}).subscribe({
       next: (data) => {
-        this.product = data
+        this.product.push(data)
+        console.log('Teste')
+        console.log(this.tokesService.getUserId)
       }
     })
   }
