@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CepServiceService } from '../service/cep-service.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DadosService } from '../service/dados.service';
 import { RegisterRequest } from '../model/register-request';
 import { Router } from '@angular/router';
@@ -17,6 +17,8 @@ export class CadastroComponent {
   registerRequest: RegisterRequest = {firstname: '', lastname: '',cpf: '',phone: '', email:'', password: ''};
   errorMsgs: string[] = [];
 
+  formulario!: FormGroup;
+
 
   constructor(
     private cepService: CepServiceService,
@@ -26,11 +28,20 @@ export class CadastroComponent {
     private router: Router,
     private authService: AuthService,
     private tokenService: TokenStorageService
-
-
     ) {
 
    }
+
+   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      firstname: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
 
   login() {
     this.router.navigate(['login']);
@@ -43,7 +54,7 @@ export class CadastroComponent {
     }).subscribe({
       next: (res) => {
         this.tokenService.saveResponse(res);
-        this.router.navigate(['Login'])
+        this.router.navigate(['Endereco'])
       },
       error: (err) => {
         this.errorMsgs = err.error.validationErrors;

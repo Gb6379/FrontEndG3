@@ -1,25 +1,21 @@
 <div class="container margem-superior">
-  <p-card>
-    <ng-template class="header" pTemplate="header">
-        <h2>Restaurantes</h2>
-    </ng-template>
-    <p-table [value]="empresa" [tableStyle]="{'min-width': '60rem'}">
-      <ng-template pTemplate="header">
-        <tr>
-            <th>Logo</th>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Comprar</th>
-        </tr>
-      </ng-template>
-       <ng-template pTemplate="body" let-empresa>
-        <tr>
-            <td><img src="../../assets/imagens/teste.png" alt="Teste"></td>
-            <td>{{empresa.name}}</td>
-            <td>{{empresa.categoria}}</td>
-            <td><button icon="pi pi-arrow-right" pButton class="Restaurante button"><a routerLink="/ShoppingCart"style="color: white">Comprar</a></button></td>
-        </tr>
-      </ng-template>
+  <div class="card">
+    <h5>Restaurantes</h5>
+    <p-table [value]="restaurantes" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Comprar</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-restaurantes>
+            <tr>
+              <td>{{restaurantes.name}}</td>
+              <td>{{restaurantes.categoria}}</td>
+              <td><button icon="pi pi-arrow-right" pButton class="Restaurante button"><a routerLink="/ShoppingCart"style="color: white">Comprar</a></button></td>
+            </tr>
+        </ng-template>
     </p-table>
-  </p-card>
+  </div>
 </div>

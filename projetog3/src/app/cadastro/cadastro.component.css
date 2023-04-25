@@ -37,12 +37,7 @@ label{
 .informacao{
   display: flex;
 }
-
-#telefone, #email{
-  width: 235px;
-}
-
-#email, #confirmaSenha{
+#confirmaSenha{
   margin-left: 40px;
 }
 
@@ -66,4 +61,7 @@ button{
   background: white;
   color: red;
   border: 1px solid red;
+}
+.erro{
+  margin-top: 2px;
 }

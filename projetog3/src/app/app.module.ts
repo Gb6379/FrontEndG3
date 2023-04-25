@@ -32,6 +32,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { DropdownModule } from 'primeng/dropdown';
 import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { EnderecoListComponent } from './endereco-list/endereco-list.component';
     AccordionModule,
     NgxPayPalModule,
     DropdownModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

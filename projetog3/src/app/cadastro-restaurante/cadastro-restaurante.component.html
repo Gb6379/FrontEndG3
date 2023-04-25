@@ -1,36 +1,50 @@
-<form [formGroup]="form" class="conteudo">
+<form [formGroup]="formulario" class="conteudo">
   <div class="container margem-superior">
     <div class="form-group box">
       <img class="logo" src="../../assets/imagens/pyyg-PhotoRoom.png-PhotoRoom.png" alt="ifood-logo">
       <h3>Cadastra-se</h3>
         <h5>Preencha seus dados de cadastro</h5>
 
+        <div class="mt-4">
         <span class="p-float-label">
-          <input type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
+          <input [(ngModel)] = "registerRequest.name" type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
           <label for="usuario">Nome</label>
         </span>
-        &nbsp;
-        <br>
+        </div>
+        <div class="erro"><p-message *ngIf="formulario.get('name')?.errors?.['required'] && formulario.get('name')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+
+
+        <div class="mt-4">
         <span class="p-float-label">
-          <input type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
+          <input [(ngModel)] = "registerRequest.cnpj" type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
           <label for="cpf">CNPJ</label>
         </span>
-        &nbsp;
-        <br>
-        <div class="informacao">
+      </div>
+      <div class="erro"><p-message *ngIf="formulario.get('cnpj')?.errors?.['required'] && formulario.get('cnpj')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+
+
+        <div class="mt-4">
           <span class="p-float-label">
-            <input type="text" class="form-control" id="telefone" name="telefone" pInputText>
+            <input [(ngModel)] = "registerRequest.phone" type="text" class="form-control" id="phone" name="phone" formControlName="phone" pInputText>
             <label for="telefone">Telefone</label>
           </span>
+        </div>
+        <div class="erro"><p-message *ngIf="formulario.get('phone')?.errors?.['required'] && formulario.get('phone')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+
+
+        <div class="mt-4">
           <span class="p-float-label">
-            <input type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
+            <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
             <label for="email">Email</label>
           </span>
         </div>
+        <div class="erro"><p-message *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched" severity="error" text="Nome obrigatório"></p-message></div>
+
         &nbsp;
+
         <div class="informacao">
         <span class="p-float-label">
-          <p-password [toggleMask]="true" id="senha" formControlName="password"></p-password>
+          <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha" formControlName="password"></p-password>
           <label for="password">Senha</label>
         </span>
         <span class="p-float-label">
@@ -38,35 +52,8 @@
           <label for="password">Confirmação de senha</label>
         </span>
         </div>
-        &nbsp;
-        <div class="informacao">
-          <span class="p-float-label">
-            <input  type="text" class="form-control" id="cep" name="cep" pInputText>
-            <label for="cep">CEP</label>
-          </span>
-          <span class="p-float-label">
-          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" disabled pInputText>
-          <label for="bairro">Bairro</label>
-        </span>
-        </div>
-        &nbsp;
-        <div class="informacao">
-          <span class="p-float-label">
-          <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua" disabled pInputText>
-          <label for="logradouro">Rua</label>
-        </span>
-          <span class="p-float-label">
-            <input type="text" class="form-control" id="numero" name="numero" pInputText>
-            <label for="numero">Número</label>
-          </span>
-        </div>
-        &nbsp;
-          <span class="p-float-label">
-          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" disabled pInputText>
-          <label for="cidade">Cidade</label>
-        </span>
         <br>
-        <button class="btn btn-secondary button cadastrar" (click)="onSubmit()"> CADASTRAR RESTAURANTE </button>
+        <button class="btn btn-secondary button cadastrar" (click)="register()"> CADASTRAR RESTAURANTE </button>
         &nbsp;
         <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>

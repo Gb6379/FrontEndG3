@@ -18,7 +18,7 @@ export class EnderecoService extends BaseServiceService{
   constructor(
     http: HttpClient,
     config : ApiConfigurationService
-    ) { 
+    ) {
       super(config,http)
     }
 
@@ -82,7 +82,7 @@ export class EnderecoService extends BaseServiceService{
       })
     );
   }
-  
+
 
   findAll(params: {
     'user_id': number;
@@ -175,7 +175,7 @@ export class EnderecoService extends BaseServiceService{
   }
 
 
-  
+
 
     list() {
     return this.http.get<Endereco[]>(this.API)
