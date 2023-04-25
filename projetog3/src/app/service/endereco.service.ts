@@ -63,7 +63,7 @@ export class EnderecoService extends BaseServiceService {
     );
   }
 
-  static readonly get_address_path = '/address/{user_id}';
+  static readonly get_address_path = '/address/getAdresses/';
 
   findAll$Response(
     params: {
@@ -73,7 +73,7 @@ export class EnderecoService extends BaseServiceService {
   ): Observable<StrictHttpResponse<Array<Endereco>>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.get_address_path,
+      EnderecoService.get_address_path + params.user_id,
       'get'
     );
     if (params) {
@@ -107,7 +107,7 @@ export class EnderecoService extends BaseServiceService {
     );
   }
 
-  static readonly delete_address_path = '/address/{adress_id}';
+  static readonly delete_address_path = '/address/';
 
   delete$Response(
     params: {
@@ -117,7 +117,7 @@ export class EnderecoService extends BaseServiceService {
   ): Observable<StrictHttpResponse<void>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.delete_address_path,
+      EnderecoService.delete_address_path + params.address_id,
       'delete'
     );
     if (params) {
@@ -153,7 +153,7 @@ export class EnderecoService extends BaseServiceService {
     );
   }
 
-  static readonly findbyid_address_path = 'address/{adress_id}';
+  static readonly findbyid_address_path = '/address/'
 
   findById1$Response(
     params: {
@@ -163,7 +163,7 @@ export class EnderecoService extends BaseServiceService {
   ): Observable<StrictHttpResponse<Endereco>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.findbyid_address_path,
+      EnderecoService.findbyid_address_path + params.address_id,
       'get'
     );
     if (params) {

@@ -32,7 +32,7 @@ export class EnderecoListComponent implements OnInit {
     this.router.navigate(['Endereco']);
   }
 
-  private fetchAllAdresses(){
+  private fetchAllAdresses(): void{
     this.enderecoService.findAll({"user_id": this.tokenService.getUserId}).subscribe({
       next: (data) => {
         this.endereco = data;
@@ -46,21 +46,21 @@ export class EnderecoListComponent implements OnInit {
   }
 
   delete(id: number | undefined) {
-    // this.contactIdToDelete = id;
+     this.enderecoIdToDelete = id;
   }
 
   cancelDelete() {
     this.enderecoIdToDelete = undefined;
   }
 
-  confirmDelete() {
-    if (this.enderecoService) {
-      this.enderecoService.delete({'address_id': this.enderecoIdToDelete!})
+  confirmDelete(id: number | undefined) {
+   // if (this.enderecoService) {
+      this.enderecoService.delete({"address_id": id!})
         .subscribe({
           next: () => {
             this.fetchAllAdresses();
           }
         });
     }
-  }
+ // }
 }

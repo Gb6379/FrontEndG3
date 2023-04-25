@@ -1,42 +1,38 @@
-<div>
 
-    <h2 class="mb-3">My contacts</h2>
-    <div class="d-flex justify-content-end mb-3 border-bottom pb-3">
-      <button type="button" class="btn btn-success" (click)="newContact()">
-        <em class="fas fa-plus-square">&nbsp;</em>
-        New contact
-      </button>
-    </div>
-    <table class="table table-striped">
-      <thead>
+
+    <h2 class="mb-3">Meus Endereços</h2>
+    <div class="container margem-superior">
+      <button icon="pi pi-plus-circle"  pButton  (click)="newContact()">asdasds</button>
+      <div class="card">
+    <p-table [value]="endereco" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
       <tr>
-        <th scope="col">Rua</th>
-        <th scope="col">Bairro</th>
-        <th scope="col">Cep</th>
-        <th scope="col">Cidade</th>
-        <th scope="col">Estado</th>
-        <th scope="col" class="text-center"><em class="fas fa-cogs"></em></th>
+        <th>Rua</th>
+        <th>Bairro</th>
+        <th>Cep</th>
+        <th>Cidade</th>
+        <th>Estado</th>
       </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let endereco of endereco">
+    </ng-template>
+    <ng-template pTemplate="body" let-endereco>
+      <tr>
         <td>{{ endereco.street }}</td>
         <td>{{ endereco.neighborhood}}</td>
         <td>{{ endereco.cep }}</td>
         <td>{{ endereco.city }}</td>
         <td>{{ endereco.state }}</td>
         <td class="text-center">
-          <em class="fas fa-pencil cursor-pointer" style="color: #0d6efd;" (click)="editAddress(endereco.id)">&nbsp;</em>
+          <button icon="pi pi-pencil" pButton class="editAddress"(click)="editAddress(endereco.id)">&nbsp;</button>
           <span>&nbsp;|&nbsp;</span>
-          <em class="fas fa-trash cursor-pointer" style="color: #dc3545;" (click)="delete(endereco.id)" data-bs-toggle="modal" data-bs-target="#deleteModal">&nbsp;</em>
+          <button icon="pi pi-trash" pButton class="deleteAddress" (click)="confirmDelete(endereco.id)">&nbsp;</button>>
         </td>
-      </tr>
-      </tbody>
-    </table>
+    </ng-template>
+    </p-table>
   </div>
+</div>
   
   
-  <!-- Modal -->
+  <!-- Modal 
   <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -58,3 +54,4 @@
       </div>
     </div>
   </div>
+  -->

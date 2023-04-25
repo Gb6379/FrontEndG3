@@ -92,6 +92,7 @@ export class EnderecoComponent implements OnInit {
       logradouro: dados.logradouro,
       bairro: dados.bairro,
       cidade: dados.localidade,
+      numero : this.enderecoRequest.number,
       uf: dados.uf
     })
   }
