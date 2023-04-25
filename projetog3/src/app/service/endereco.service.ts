@@ -9,179 +9,195 @@ import { RequestBuilder } from './request-builder';
 import { EnderecoRequest } from '../model/EnderecoRequest';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EnderecoService extends BaseServiceService{
+export class EnderecoService extends BaseServiceService {
+  private readonly API = 'api/address';
 
-  private readonly API = 'api/address'
+  constructor(http: HttpClient, config: ApiConfigurationService) {
+    super(config, http);
+  }
 
-  constructor(
-    http: HttpClient,
-    config : ApiConfigurationService
-    ) {
-      super(config,http)
-    }
+  static readonly save_address_path = 'address/user/{user_id}';
 
-  static readonly save_address_path = 'address/user/{user_id}'
-
-
-  save$AddresResponse(params: {body: EnderecoRequest}, context?: HttpContext) : Observable<StrictHttpResponse<Endereco>>{
-
-    const rb = new RequestBuilder(this.rootUrl, EnderecoService.save_address_path, 'post');
-    if(params){
+  save$AddresResponse(
+    params: { body: EnderecoRequest },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<Endereco>> {
+    const rb = new RequestBuilder(
+      this.rootUrl,
+      EnderecoService.save_address_path,
+      'post'
+    );
+    if (params) {
       rb.body(params.body, 'application/json');
     }
 
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Endereco>;
-      })
-    );
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'json',
+          accept: 'application/json',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<Endereco>;
+        })
+      );
   }
 
-  saveAddress(params: {
-    body: EnderecoRequest
-  },
-  context?: HttpContext
-
+  saveAddress(
+    params: {
+      body: EnderecoRequest;
+    },
+    context?: HttpContext
   ): Observable<Endereco> {
-
-    return this.save$AddresResponse(params,context).pipe(
+    return this.save$AddresResponse(params, context).pipe(
       map((r: StrictHttpResponse<Endereco>) => r.body as Endereco)
     );
   }
 
-  static readonly get_address_path = 'address/{user_id}'
+  static readonly get_address_path = 'address/{user_id}';
 
-
-  findAll$Response(params: {
-    'user_id': number;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<Array<Endereco>>> {
-
-    const rb = new RequestBuilder(this.rootUrl, EnderecoService.get_address_path, 'get');
+  findAll$Response(
+    params: {
+      user_id: number;
+    },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<Array<Endereco>>> {
+    const rb = new RequestBuilder(
+      this.rootUrl,
+      EnderecoService.get_address_path,
+      'get'
+    );
     if (params) {
       rb.path('user_id', params['user_id'], {});
     }
 
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<Endereco>>;
-      })
-    );
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'json',
+          accept: 'application/json',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<Array<Endereco>>;
+        })
+      );
   }
 
-
-  findAll(params: {
-    'user_id': number;
-  },
-  context?: HttpContext
-
-): Observable<Array<Endereco>> {
-
-    return this.findAll$Response(params,context).pipe(
+  findAll(
+    params: {
+      user_id: number;
+    },
+    context?: HttpContext
+  ): Observable<Array<Endereco>> {
+    return this.findAll$Response(params, context).pipe(
       map((r: StrictHttpResponse<Array<Endereco>>) => r.body as Array<Endereco>)
     );
   }
 
-  static readonly delete_address_path = 'address/{adress_id}'
+  static readonly delete_address_path = 'address/{adress_id}';
 
-
-  delete$Response(params: {
-    'address_id': number;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<void>> {
-
-    const rb = new RequestBuilder(this.rootUrl, EnderecoService.delete_address_path, 'delete');
+  delete$Response(
+    params: {
+      address_id: number;
+    },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<void>> {
+    const rb = new RequestBuilder(
+      this.rootUrl,
+      EnderecoService.delete_address_path,
+      'delete'
+    );
     if (params) {
       rb.path('address_id', params['address_id'], {});
     }
 
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
-      })
-    );
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'text',
+          accept: '*/*',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return (r as HttpResponse<any>).clone({
+            body: undefined,
+          }) as StrictHttpResponse<void>;
+        })
+      );
   }
 
-  delete(params: {
-    'address_id': number ;
-  },
-  context?: HttpContext
-
-): Observable<void> {
-
-    return this.delete$Response(params,context).pipe(
+  delete(
+    params: {
+      address_id: number;
+    },
+    context?: HttpContext
+  ): Observable<void> {
+    return this.delete$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
 
-  static readonly findbyid_address_path = 'address/{adress_id}'
+  static readonly findbyid_address_path = 'address/{adress_id}';
 
-
-  findById1$Response(params: {
-    'address_id': number;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<Endereco>> {
-
-    const rb = new RequestBuilder(this.rootUrl, EnderecoService.findbyid_address_path, 'get');
+  findById1$Response(
+    params: {
+      address_id: number;
+    },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<Endereco>> {
+    const rb = new RequestBuilder(
+      this.rootUrl,
+      EnderecoService.findbyid_address_path,
+      'get'
+    );
     if (params) {
       rb.path('address_id', params['address_id'], {});
     }
 
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Endereco>;
-      })
-    );
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'json',
+          accept: 'application/json',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<Endereco>;
+        })
+      );
   }
 
-  findById1(params: {
-    'address_id': number;
-  },
-  context?: HttpContext
-
-): Observable<Endereco> {
-
-    return this.findById1$Response(params,context).pipe(
+  findById1(
+    params: {
+      address_id: number;
+    },
+    context?: HttpContext
+  ): Observable<Endereco> {
+    return this.findById1$Response(params, context).pipe(
       map((r: StrictHttpResponse<Endereco>) => r.body as Endereco)
     );
   }
 
-
-
-
-    list() {
-    return this.http.get<Endereco[]>(this.API)
-    .pipe(
+  list() {
+    return this.http.get<Endereco[]>(this.API).pipe(
       first(),
-      tap(endereco => console.log(endereco))
-    )
+      tap((endereco) => console.log(endereco))
+    );
   }
 }

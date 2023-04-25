@@ -24,7 +24,7 @@ export class PaymentComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-      currency: 'EUR',
+      currency: 'BRL',
       clientId: `${environment.Client_ID}`,
       createOrderOnClient: (data) =>
         <ICreateOrderRequest>{
@@ -32,22 +32,22 @@ export class PaymentComponent implements OnInit {
           purchase_units: [
             {
               amount: {
-                currency_code: 'EUR',
+                currency_code: 'BRL',
                 value: `${this.cartTotal}`,
                 breakdown: {
                   item_total: {
-                    currency_code: 'EUR',
+                    currency_code: 'BRL',
                     value: `${this.cartTotal}`,
                   },
                 },
               },
               items: [
                 {
-                  name: 'Enterprise Subscription',
+                  name: 'Pygg enterprise',
                   quantity: '1',
                   category: 'DIGITAL_GOODS',
                   unit_amount: {
-                    currency_code: 'EUR',
+                    currency_code: 'BRL',
                     value: `${this.cartTotal}`,
                   },
                 },
