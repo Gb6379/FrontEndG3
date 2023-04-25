@@ -43,7 +43,7 @@ export class ListaProdutosComponent implements OnInit {
   getProducts(){
     this.productService.findById1({"company_id": this.tokenService.getUserId}).subscribe({
       next: (data) => {
-        this.product.push(data)
+        this.product = data;
         console.log('Teste')
         console.log(this.tokenService.getUserId)
       }

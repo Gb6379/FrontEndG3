@@ -6,7 +6,7 @@ import { Observable, filter, map } from 'rxjs';
 import { StrictHttpResponse } from '../model/strict-http-response';
 import { Product } from '../model/Product';
 import { RequestBuilder } from './request-builder';
-import { ProducRequest } from '../model/ProductRequest';
+import { ProductRequest } from '../model/ProductRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class ListaProdutosService extends BaseServiceService {
       company_id: number;
     },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Product>> {
+  ): Observable<StrictHttpResponse<Array<Product>>> {
     const rb = new RequestBuilder
     (
       this.rootUrl,
@@ -51,7 +51,7 @@ export class ListaProdutosService extends BaseServiceService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
-          return r as StrictHttpResponse<Product>;
+          return r as StrictHttpResponse<Array<Product>>;
         })
       );
   }
@@ -61,16 +61,16 @@ export class ListaProdutosService extends BaseServiceService {
       company_id: number;
     },
     context?: HttpContext
-  ): Observable<Product> {
+  ): Observable<Array<Product>> {
     return this.findById1$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Product>) => r.body as Product)
+      map((r: StrictHttpResponse<Array<Product>>) => r.body as Array<Product>)
     );
   }
 
   static readonly save_product_path = '/products/';
 
   save$ProductResponse(
-    params: { body: ProducRequest },
+    params: { body: ProductRequest },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Product>> {
     const rb = new RequestBuilder(
@@ -100,7 +100,7 @@ export class ListaProdutosService extends BaseServiceService {
 
   saveProduct(
     params: {
-      body: ProducRequest;
+      body: ProductRequest;
     },
     context?: HttpContext
   ): Observable<Product> {
