@@ -13,12 +13,12 @@ import { CarrinhoRequest } from '../model/CarrinhoRequest';
 })
 export class ShoppingCartService extends BaseServiceService {
   products: any[] = [];
-  static readonly find_path = 'cart/{user_id}';
-  static readonly save_path: 'cart/add';
-  static readonly update_path: 'cart/add/{cart_id}';
-  static readonly add_item_path: 'cart/addItem/{product_id}';
-  static readonly remove_item_path: 'cart/removeItem/{product_id}';
-  static readonly empty_cart_path: 'cart/emptyCart/{user_id}';
+  static readonly find_path = '/cart';
+  static readonly save_path: '/cart/add';
+  static readonly update_path: '/cart/update';
+  static readonly add_item_path: '/cart/addItem/{product_id}';
+  static readonly remove_item_path: '/cart/removeItem/{product_id}';
+  static readonly empty_cart_path: '/cart/emptyCart';
 
   constructor(http: HttpClient, config: ApiConfigurationService) {
     super(config, http);
@@ -26,7 +26,7 @@ export class ShoppingCartService extends BaseServiceService {
 
   findById1(
     params: {
-      user_id: number;
+      header: any;
     },
     context?: HttpContext
   ): Observable<Carrinho> {
@@ -37,7 +37,7 @@ export class ShoppingCartService extends BaseServiceService {
 
   findById1$Response(
     params: {
-      user_id: number;
+      header: any;
     },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Carrinho>> {
@@ -47,7 +47,7 @@ export class ShoppingCartService extends BaseServiceService {
       'get'
     );
     if (params) {
-      rb.path('user_id', params['user_id'], {});
+      rb.header('Authorization', params.header);
     }
 
     return this.http
@@ -69,24 +69,26 @@ export class ShoppingCartService extends BaseServiceService {
   saveCart(
     params: {
       body: CarrinhoRequest;
+      header: any;
     },
     context?: HttpContext
-  ): Observable<Carrinho> {
+  ): Observable<any> {
     return this.save$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Carrinho>) => r.body as Carrinho)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   save$Response(
-    params: { body: CarrinhoRequest },
+    params: { body: CarrinhoRequest; header: any },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Carrinho>> {
+  ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       ShoppingCartService.save_path,
       'post'
     );
     if (params) {
+      rb.header('Authorization', params.header);
       rb.body(params.body, 'application/json');
     }
 
@@ -101,27 +103,27 @@ export class ShoppingCartService extends BaseServiceService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
-          return r as StrictHttpResponse<Carrinho>;
+          return r as StrictHttpResponse<any>;
         })
       );
   }
 
   updateCart(
     params: {
-      cart_id: number;
+      header: any;
       body: CarrinhoRequest;
     },
     context?: HttpContext
-  ): Observable<Carrinho> {
+  ): Observable<any> {
     return this.update$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Carrinho>) => r.body as Carrinho)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   update$Response(
-    params: { body: CarrinhoRequest; cart_id: number },
+    params: { body: CarrinhoRequest; header: any },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Carrinho>> {
+  ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       ShoppingCartService.update_path,
@@ -129,7 +131,7 @@ export class ShoppingCartService extends BaseServiceService {
     );
     if (params) {
       rb.body(params.body, 'application/json');
-      rb.path('cart_id', params['cart_id'], {});
+      rb.header('Authorization', params.header);
     }
 
     return this.http
@@ -143,7 +145,7 @@ export class ShoppingCartService extends BaseServiceService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
-          return r as StrictHttpResponse<Carrinho>;
+          return r as StrictHttpResponse<any>;
         })
       );
   }
@@ -151,18 +153,19 @@ export class ShoppingCartService extends BaseServiceService {
   addItem(
     params: {
       product_id: number;
+      header: any;
     },
     context?: HttpContext
-  ): Observable<Carrinho> {
+  ): Observable<any> {
     return this.addItem$Response(params, context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   addItem$Response(
-    params: { product_id: number },
+    params: { product_id: number; header: any },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Carrinho>> {
+  ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       ShoppingCartService.add_item_path,
@@ -170,6 +173,7 @@ export class ShoppingCartService extends BaseServiceService {
     );
     if (params) {
       rb.path('product_id', params['product_id'], {});
+      rb.header('Authorization', params.header);
     }
 
     return this.http
@@ -191,18 +195,19 @@ export class ShoppingCartService extends BaseServiceService {
   removeItemCart(
     params: {
       product_id: number;
+      header: any;
     },
     context?: HttpContext
-  ): Observable<Carrinho> {
+  ): Observable<any> {
     return this.removeItem$Response(params, context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   removeItem$Response(
-    params: { product_id: number },
+    params: { product_id: number; header: any },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Carrinho>> {
+  ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       ShoppingCartService.remove_item_path,
@@ -210,6 +215,7 @@ export class ShoppingCartService extends BaseServiceService {
     );
     if (params) {
       rb.path('product_id', params['product_id'], {});
+      rb.header('Authorization', params.header);
     }
 
     return this.http
@@ -231,18 +237,19 @@ export class ShoppingCartService extends BaseServiceService {
   cleanCart(
     params: {
       user_id: number;
+      header: any;
     },
     context?: HttpContext
-  ): Observable<Carrinho> {
+  ): Observable<any> {
     return this.cleanCart$Response(params, context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   cleanCart$Response(
-    params: { user_id: number },
+    params: { user_id: number; header: any },
     context?: HttpContext
-  ): Observable<StrictHttpResponse<Carrinho>> {
+  ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       ShoppingCartService.empty_cart_path,
@@ -250,6 +257,7 @@ export class ShoppingCartService extends BaseServiceService {
     );
     if (params) {
       rb.path('user_id', params['user_id'], {});
+      rb.header('Authorization', params.header);
     }
 
     return this.http

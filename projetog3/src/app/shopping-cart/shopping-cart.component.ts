@@ -3,6 +3,8 @@ import { Carrinho } from './../model/Carrinho';
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../service/shopping-cart.service';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../service/token-storage.service';
+
 import { CarrinhoItem } from '../model/CarrinhoItem';
 
 @Component({
@@ -17,23 +19,26 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(
     private shopping_cart: ShoppingCartService,
-    private router: Router
+    private router: Router,
+    private tokenStorage: TokenStorageService
   ) {}
 
   ngOnInit() {
-    this.idUser = localStorage.getItem('userId');
-    this.shopping_cart.findById1({ user_id: Number(this.idUser) }).subscribe({
-      next: (res: any) => {
-        console.log(res);
-        this.productList = res;
-      },
-      error: (error) => {
-        alert(error);
-      },
-      complete: () => {
-        console.log('Request Completed');
-      },
-    });
+    this.idUser = this.tokenStorage.getUserId;
+    this.shopping_cart
+      .findById1({ header: this.tokenStorage.getToken })
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.productList = res;
+        },
+        error: (error) => {
+          alert(error);
+        },
+        complete: () => {
+          console.log('Request Completed');
+        },
+      });
     this.total();
 
     this.products = this.productList.cartItems;
@@ -41,11 +46,12 @@ export class ShoppingCartComponent implements OnInit {
 
   //Add product to Cart
   addToCart(product: any) {
-    this.shopping_cart.addItem({ product_id: product.id });
+    this.shopping_cart.addItem({
+      product_id: product.id,
+      header: this.tokenStorage.getToken,
+    });
     this.shopping_cart
-      .findById1({
-        user_id: Number(this.idUser),
-      })
+      .findById1({ header: this.tokenStorage.getToken })
       .subscribe((carrinho) => {
         this.products = carrinho;
       });
@@ -53,11 +59,12 @@ export class ShoppingCartComponent implements OnInit {
 
   //Remove a Product from Cart
   removeFromCart(product: any) {
-    this.shopping_cart.removeItemCart({ product_id: product.id });
+    this.shopping_cart.removeItemCart({
+      product_id: product.id,
+      header: this.tokenStorage.getToken,
+    });
     this.shopping_cart
-      .findById1({
-        user_id: Number(this.idUser),
-      })
+      .findById1({ header: this.tokenStorage.getToken })
       .subscribe((carrinho) => {
         this.products = carrinho;
       });

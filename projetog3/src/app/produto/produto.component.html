@@ -1,4 +1,4 @@
-<form>
+
   <div class="container margem-superior">
     <div class="form-group box">
       &nbsp;
@@ -13,7 +13,7 @@
         &nbsp;
         <br>
         <span class="p-float-label">
-          <input type="text" class="form-control" id="Produto" pInputText>
+          <input type="text" class="form-control" id="Produto" [(ngModel)]="produto.name" pInputText>
           <label for="Produto">Nome do Produto</label>
         </span>
         &nbsp;
@@ -22,10 +22,10 @@
 
       <div class="informacao">
         <span class="p-float-label">
-          <input type="text" class=" form-control" id="Valor" pInputText>
+          <input type="text" class=" form-control" id="Valor" [(ngModel)]="produto.price" pInputText>
           <label for="Valor">Valor</label>
           </span>
-        <p-dropdown id="categoria" [options]="cities" [(ngModel)]="selectedCityCode" optionLabel="name" placeholder="Categoria"></p-dropdown>
+        <p-dropdown id="categoria" [options]="categoryList" [(ngModel)]="categoria" optionLabel="name" placeholder="Categoria"></p-dropdown>
       </div>
 
     &nbsp;
@@ -36,9 +36,9 @@
      </span>
     &nbsp;
     <br>
-    <button class="btn btn-secondary button cadastrar"> CADASTRAR PRODUTO </button>
+    <button class="btn btn-secondary button cadastrar" (click)="salvarProduto(categoria.id!)"> CADASTRAR PRODUTO </button>
         &nbsp;
     <button class="btn btn-primary button cancelar"> LIMPAR </button>
     </div>
   </div>
-<form>
+
