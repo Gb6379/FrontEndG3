@@ -17,15 +17,7 @@ export class ProdutoComponent implements OnInit {
 
   categoria: Categoria[] = [];
 
-<<<<<<< HEAD
   product:Product[] = [];
-=======
-  cities: any[];
-
-  selectedCityCode: string;
-
-  product: Product[] = [];
->>>>>>> 5139705597f61415e05ad7b98437dd1480b6c686
 
   productRequest: ProductRequest = {
     name: '',
