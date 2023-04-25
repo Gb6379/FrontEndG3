@@ -1,3 +1,5 @@
+import { NumberValueAccessor } from "@angular/forms";
+
 export interface ProductRequest {
 
   name?: string;
@@ -5,5 +7,6 @@ export interface ProductRequest {
   imageUrl?: string;
   amount?: string;
   companyId: number;
+  categoryId: number;
     
 }

@@ -139,15 +139,20 @@ export class ProdutoService extends BaseServiceService {
       );
   }
 
-  findAllCategory(context?: HttpContext): Observable<Array<Categoria>> {
-    return this.findAllCategory$Response(context).pipe(
+  findAllCategory(
+    params?: {
+    },
+    context?: HttpContext): Observable<Array<Categoria>> {
+    console.log("entrei fin all category")
+    return this.findAllCategory$Response(params,context).pipe(
       map(
         (r: StrictHttpResponse<Array<Categoria>>) => r.body as Array<Categoria>
       )
     );
   }
 
-  findAllCategory$Response(
+  findAllCategory$Response(params?: {
+  },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Array<Categoria>>> {
     const rb = new RequestBuilder(
@@ -155,6 +160,9 @@ export class ProdutoService extends BaseServiceService {
       ProdutoService.find_all_category_path,
       'get'
     );
+
+    if (params) {
+    }
 
     return this.http
       .request(
@@ -167,6 +175,7 @@ export class ProdutoService extends BaseServiceService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
+          console.log("R",r)
           return r as StrictHttpResponse<Array<Categoria>>;
         })
       );

@@ -14,37 +14,49 @@ import { TokenStorageService } from '../service/token-storage.service';
 })
 export class ProdutoComponent implements OnInit {
   categoryList: any;
-  produto: ProductRequest = { name: '', price: "", amount: "", companyId: -1 };
-  categoria: Categoria = {};
+
+  categoria: Categoria[] = [];
 
   cities: any[];
 
   selectedCityCode: string;
 
-  product:Product[] = [];
+  product: Product[] = [];
 
-  productRequest: ProductRequest = {name: "", price: "", amount: "", companyId:-1}
+  productRequest: ProductRequest = {
+    name: '',
+    price: '',
+    amount: '',
+    companyId: -1,
+    categoryId: -1,
+  };
   errorMsgs: string[] = [];
   private productId?: number;
 
   constructor(
-     private productService: ListaProdutosService,
-     private produtoService : ProdutoService,
+    private productService: ListaProdutosService,
+    private produtoService: ProdutoService,
     private tokenService: TokenStorageService,
     private router: Router
   ) {
     this.cities = [
-      {name: 'Bebidas', code: 'Bebidas'},
-      {name: 'Refeições', code: 'Refeicoess'},
-  ];
-  this.selectedCityCode = ""
+      { name: 'Bebidas', code: 'Bebidas' },
+      { name: 'Refeições', code: 'Refeicoess' },
+    ];
+    this.selectedCityCode = '';
+    //this.categoryList= [{name: 'Bebidas', code: 'Bebidas'}]
   }
 
   ngOnInit(): void {
-    this.produtoService.findAllCategory().subscribe({
-      next: (res: any) => {
+    this.getCategories();
+  }
+
+  async getCategories() {
+    this.produtoService.findAllCategory({}).subscribe({
+      next: (res) => {
         console.log(res);
         this.categoryList = res;
+        // this.categoryList.push(this.categoria.categoryName);
       },
       error: (error) => {
         alert(error);
@@ -57,23 +69,21 @@ export class ProdutoComponent implements OnInit {
 
   salvarProduto(categoryId: number) {
     this.produtoService.saveProductAndCategory({
-      body: this.produto,
+      body: this.productRequest,
       category_id: categoryId,
       header: this.tokenService.getToken,
     });
   }
 
-   save() {
+  save() {
     this.productRequest.companyId = this.tokenService.getUserId;
-    this.productService.saveProduct({body: this.productRequest})
-      .subscribe({
-        next: () => {
-          this.router.navigate(['Lista-produtos']);
-        },
-        error: (err) => {
-          this.errorMsgs = err.error.validationErrors;
-        }
-      });
+    this.productService.saveProduct({ body: this.productRequest }).subscribe({
+      next: () => {
+        this.router.navigate(['Lista-produtos']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-
 }

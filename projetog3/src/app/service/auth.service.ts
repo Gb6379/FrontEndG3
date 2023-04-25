@@ -139,7 +139,7 @@ export class AuthService extends BaseServiceService {
     }
 
     loginC(params: {body: AuthenticationRequest},context?: HttpContext): Observable<AuthenticationResponse> {
-      return this.login$response(params,context).pipe(
+      return this.login$responseC(params,context).pipe(
         map((r: StrictHttpResponse<AuthenticationResponse>) => r.body as AuthenticationResponse)
       );
     }

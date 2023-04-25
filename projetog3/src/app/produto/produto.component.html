@@ -25,7 +25,7 @@
           <input [(ngModel)] = "productRequest.price"  type="text" class=" form-control" id="Valor" pInputText>
           <label for="Valor">Valor</label>
           </span>
-        <p-dropdown id="categoria" [options]="categoryList" [(ngModel)]="categoria" optionLabel="name" placeholder="Categoria"></p-dropdown>
+        <p-dropdown id="categoria"  [options]="categoryList" [(ngModel)]="productRequest.categoryId" optionLabel="categoryName" placeholder="Categoria"></p-dropdown>
       </div>
 
     &nbsp;
@@ -36,7 +36,6 @@
      </span>
     &nbsp;
     <br>
-    <button class="btn btn-secondary button cadastrar" (click)="salvarProduto(categoria.id!)"> CADASTRAR PRODUTO </button>
     <button class="btn btn-secondary button cadastrar" (click)="save()"> CADASTRAR PRODUTO </button>
         &nbsp;
     <button class="btn btn-primary button cancelar"> LIMPAR </button>
