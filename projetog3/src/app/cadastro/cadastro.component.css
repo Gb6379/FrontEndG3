@@ -25,7 +25,7 @@ h5{
 }
 
 .box{
-  width: 50%;
+  width: 70%;
   position: relative;
   top: 10%;
   left: 7.7rem;
@@ -39,6 +39,10 @@ label{
 #telefone, #email, #numero, #nome, #cpf, #lastname, #senha{
   width: 350px;
   align-items: center;
+}
+
+#email, #confirmaSenha{
+  margin-left: 40px;
 }
 
 button{

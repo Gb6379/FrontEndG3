@@ -23,11 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { DialogModule } from 'primeng/dialog';
-import {ButtonModule} from 'primeng/button';
-import {AccordionModule} from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { AccordionModule } from 'primeng/accordion';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
-import {DropdownModule} from 'primeng/dropdown';
+import { PaymentComponent } from './payment/payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { DropdownModule } from 'primeng/dropdown';
 import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
@@ -47,6 +49,7 @@ import { EnderecoListComponent } from './endereco-list/endereco-list.component';
     CategoriaComponent,
     CadastroRestauranteComponent,
     LoginEmpresaComponent,
+    PaymentComponent,
     EnderecoComponent,
     EnderecoListComponent,
   ],
@@ -67,7 +70,8 @@ import { EnderecoListComponent } from './endereco-list/endereco-list.component';
     DialogModule,
     ButtonModule,
     AccordionModule,
-    DropdownModule
+    NgxPayPalModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

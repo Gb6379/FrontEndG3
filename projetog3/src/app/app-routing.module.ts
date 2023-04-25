@@ -12,6 +12,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { CadastroRestauranteComponent } from './cadastro-restaurante/cadastro-restaurante.component';
 import { LoginEmpresaComponent } from './login-empresa/login-empresa.component';
+import { PaymentComponent } from './payment/payment.component';
 import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 
@@ -24,12 +25,13 @@ const routes: Routes = [
   { path: 'ShoppingCart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessComponent },
   { path: 'Dados', component: InformacaoUsuarioComponent },
-  { path: 'Produto', component: ProdutoComponent},
-  { path: 'Categoria', component: CategoriaComponent},
-  { path: 'Cadastro-Restaurante', component: CadastroRestauranteComponent},
-  { path: 'Login-restaurante', component: LoginEmpresaComponent},
-  { path: 'Endereco', component: EnderecoComponent},
-  {path:  'EnderecoList', component: EnderecoListComponent}
+  { path: 'Produto', component: ProdutoComponent },
+  { path: 'Categoria', component: CategoriaComponent },
+  { path: 'Cadastro-Restaurante', component: CadastroRestauranteComponent },
+  { path: 'Login-restaurante', component: LoginEmpresaComponent },
+  { path: 'Payment', component: PaymentComponent },
+  { path: 'Endereco', component: EnderecoComponent },
+  { path: 'EnderecoList', component: EnderecoListComponent },
 ];
 
 @NgModule({
