@@ -6,6 +6,7 @@ import { Observable, filter, map } from 'rxjs';
 import { StrictHttpResponse } from '../model/strict-http-response';
 import { Product } from '../model/Product';
 import { RequestBuilder } from './request-builder';
+import { ProducRequest } from '../model/ProductRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -65,4 +66,48 @@ export class ListaProdutosService extends BaseServiceService {
       map((r: StrictHttpResponse<Product>) => r.body as Product)
     );
   }
+
+  static readonly save_product_path = '/products/';
+
+  save$ProductResponse(
+    params: { body: ProducRequest },
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<Product>> {
+    const rb = new RequestBuilder(
+      this.rootUrl,
+      ListaProdutosService.save_product_path + params.body.companyId,
+      'post'
+    );
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http
+      .request(
+        rb.build({
+          responseType: 'json',
+          accept: 'application/json',
+          context: context,
+        })
+      )
+      .pipe(
+        filter((r: any) => r instanceof HttpResponse),
+        map((r: HttpResponse<any>) => {
+          return r as StrictHttpResponse<Product>;
+        })
+      );
+  }
+
+  saveProduct(
+    params: {
+      body: ProducRequest;
+    },
+    context?: HttpContext
+  ): Observable<Product> {
+    return this.save$ProductResponse(params, context).pipe(
+      map((r: StrictHttpResponse<Product>) => r.body as Product)
+    );
+  }
+
+
 }
