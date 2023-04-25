@@ -13,46 +13,50 @@ import { TokenStorageService } from '../service/token-storage.service';
   styleUrls: ['./produto.component.css'],
 })
 export class ProdutoComponent implements OnInit {
-
   categoryList: any;
- 
-  categoria: Categoria[] =[];
+
+  categoria: Categoria[] = [];
 
   cities: any[];
 
   selectedCityCode: string;
 
-  product:Product[] = [];
+  product: Product[] = [];
 
-  productRequest: ProductRequest = {name: "", price: "", amount: "", companyId:-1, categoryId: -1}
+  productRequest: ProductRequest = {
+    name: '',
+    price: '',
+    amount: '',
+    companyId: -1,
+    categoryId: -1,
+  };
   errorMsgs: string[] = [];
   private productId?: number;
 
   constructor(
-     private productService: ListaProdutosService,
-     private produtoService : ProdutoService,
+    private productService: ListaProdutosService,
+    private produtoService: ProdutoService,
     private tokenService: TokenStorageService,
     private router: Router
   ) {
     this.cities = [
-      {name: 'Bebidas', code: 'Bebidas'},
-      {name: 'Refeições', code: 'Refeicoess'},
-  ];
-  this.selectedCityCode = ""
-  //this.categoryList= [{name: 'Bebidas', code: 'Bebidas'}]
- 
+      { name: 'Bebidas', code: 'Bebidas' },
+      { name: 'Refeições', code: 'Refeicoess' },
+    ];
+    this.selectedCityCode = '';
+    //this.categoryList= [{name: 'Bebidas', code: 'Bebidas'}]
   }
 
   ngOnInit(): void {
-    this.getCategories()
+    this.getCategories();
   }
 
- async getCategories(){
+  async getCategories() {
     this.produtoService.findAllCategory({}).subscribe({
       next: (res) => {
         console.log(res);
         this.categoryList = res;
-       // this.categoryList.push(this.categoria.categoryName);
+        // this.categoryList.push(this.categoria.categoryName);
       },
       error: (error) => {
         alert(error);
@@ -71,17 +75,15 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-   save() {
+  save() {
     this.productRequest.companyId = this.tokenService.getUserId;
-    this.productService.saveProduct({body: this.productRequest})
-      .subscribe({
-        next: () => {
-          this.router.navigate(['Lista-produtos']);
-        },
-        error: (err) => {
-          this.errorMsgs = err.error.validationErrors;
-        }
-      });
+    this.productService.saveProduct({ body: this.productRequest }).subscribe({
+      next: () => {
+        this.router.navigate(['Lista-produtos']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-
 }
