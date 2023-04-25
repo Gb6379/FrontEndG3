@@ -16,7 +16,7 @@ import { FormControl } from '@angular/forms';
 export class EnderecoComponent implements OnInit {
 
 
-  enderecoRequest: EnderecoRequest = {street: "", neighborhood: "", cep: "", city: "", state: "", userId: -1}
+  enderecoRequest: EnderecoRequest = {street: "", neighborhood: "", cep: "", city: "", state: "", number:"", userId: -1}
   errorMsgs: string[] = [];
   title = 'Create Endereco';
   private enderecoId?: number;
@@ -72,12 +72,14 @@ export class EnderecoComponent implements OnInit {
       street: endereco.street!,
       neighborhood: endereco.neighborhood!,
       city: endereco.city!,
+      number: endereco.number!,
       state: endereco.state!
+      
     }
   }
 
-  consultaCep(valor: any, form: any){
-    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,form));
+  consultaCep(valor: any, Endereco: any){
+    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,Endereco));
   }
 
   populaForm(dados:any, form: FormControl){

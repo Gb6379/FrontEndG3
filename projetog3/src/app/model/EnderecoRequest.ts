@@ -4,5 +4,6 @@ export interface EnderecoRequest {
   cep: String;
   city: String;
   state: String;
+  number:String;
   userId: number;
 }

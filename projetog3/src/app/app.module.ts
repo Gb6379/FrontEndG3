@@ -58,6 +58,8 @@ import { OrderComponent } from './order/order.component';
     PaymentComponent,
     EnderecoComponent,
     EnderecoListComponent,
+    ListaProdutosComponent,
+    AcompanhamentoComponent,
     OrderComponent,
   ],
   imports: [

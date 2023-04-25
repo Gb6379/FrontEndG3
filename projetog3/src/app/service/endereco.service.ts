@@ -18,7 +18,7 @@ export class EnderecoService extends BaseServiceService {
     super(config, http);
   }
 
-  static readonly save_address_path = 'address/user/{user_id}';
+  static readonly save_address_path = '/address/user/';
 
   save$AddresResponse(
     params: { body: EnderecoRequest },
@@ -26,7 +26,7 @@ export class EnderecoService extends BaseServiceService {
   ): Observable<StrictHttpResponse<Endereco>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.save_address_path,
+      EnderecoService.save_address_path + params.body.userId,
       'post'
     );
     if (params) {
