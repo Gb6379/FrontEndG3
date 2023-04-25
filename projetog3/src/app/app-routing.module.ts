@@ -17,6 +17,7 @@ import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'Endereco', component: EnderecoComponent },
   { path: 'EnderecoList', component: EnderecoListComponent },
   { path: 'Acompanhamento', component: AcompanhamentoComponent },
-  { path: 'Lista-produtos', component: ListaProdutosComponent }
+  { path: 'Lista-produtos', component: ListaProdutosComponent },
+  {path: 'Orders', component: OrderComponent }
 ];
 
 @NgModule({
