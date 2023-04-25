@@ -5,5 +5,5 @@ export interface Product {
   imageUrl?: string;
   amount?: number;
   description?: string;
-  company?: number;
+  companyId?: number;
 }

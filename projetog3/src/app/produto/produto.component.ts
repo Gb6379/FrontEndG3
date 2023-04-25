@@ -4,6 +4,7 @@ import { ProdutoService } from './../service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../service/token-storage.service';
+import { ProductRequest } from '../model/ProductRequest';
 
 @Component({
   selector: 'app-produto',
@@ -12,7 +13,7 @@ import { TokenStorageService } from '../service/token-storage.service';
 })
 export class ProdutoComponent implements OnInit {
   categoryList: any;
-  produto: Product = { name: '', price: 0, amount: 0 };
+  produto: ProductRequest = { name: '', price: "", amount: "", companyId: -1 };
   categoria: Categoria = {};
 
   constructor(
@@ -37,7 +38,7 @@ export class ProdutoComponent implements OnInit {
   }
 
   salvarProduto(categoryId: number) {
-    this.produtoService.saveProduct({
+    this.produtoService.saveProductAndCategory({
       body: this.produto,
       category_id: categoryId,
       header: this.tokenStorage.getToken,
