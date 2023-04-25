@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EnderecoService } from '../service/endereco.service';
+import { TokenStorageService } from '../service/token-storage.service';
 
 @Component({
   selector: 'app-categoria',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private enderecoService: EnderecoService,
+    private tokenService: TokenStorageService
+) { }
 
   ngOnInit(): void {
   }
