@@ -1,0 +1,53 @@
+.container{
+    margin-top: 5rem;
+
+    display: grid;
+    justify-content: center;
+}
+
+.cab{
+    display: block;
+    width: 100vh;
+    
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.endereco{
+    width: 100vh;
+    display: flex;
+}
+
+.dados{
+    margin: 1rem 1rem 1rem 0;
+}
+
+.tempo{
+    margin: 1rem 0 1rem 0; 
+}
+
+.status{
+    width: 100vh;
+
+    margin: 1rem 1rem 1rem 0;
+}
+
+.btn-voltar{
+    margin-top: 0.5rem;
+
+    border-radius: 0.375rem;
+
+    background: red;
+    color: white;
+    border: none;
+}
+
+button{
+    width: 10rem;
+    height: 2.75rem;
+}
+  
+.btn-voltar:hover{
+    opacity: 0.75;
+    transition: 0.75s;
+}

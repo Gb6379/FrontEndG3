@@ -18,23 +18,20 @@ export class EnderecoService extends BaseServiceService {
     super(config, http);
   }
 
-  static readonly save_address_path = '/address/user/';
+  static readonly save_address_path = 'address/user/{user_id}';
 
   save$AddresResponse(
     params: { body: EnderecoRequest },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Endereco>> {
-    console.log("cheguei na saveaddressResponse")
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.save_address_path + params.body.userId,
+      EnderecoService.save_address_path,
       'post'
     );
     if (params) {
       rb.body(params.body, 'application/json');
-
     }
-    console.log("cheguei no return")
 
     return this.http
       .request(

@@ -16,7 +16,7 @@ import { FormControl } from '@angular/forms';
 export class EnderecoComponent implements OnInit {
 
 
-  enderecoRequest: EnderecoRequest = {street: "", neighborhood: "", cep: "", city: "", number:"", state: "", userId: -1}
+  enderecoRequest: EnderecoRequest = {street: "", neighborhood: "", cep: "", city: "", state: "", userId: -1}
   errorMsgs: string[] = [];
   title = 'Create Endereco';
   private enderecoId?: number;
@@ -53,7 +53,6 @@ export class EnderecoComponent implements OnInit {
 
   save() {
     this.enderecoRequest.userId = this.tokenService.getUserId;
-    console.log( this.enderecoRequest.userId )
     this.enderecoService.saveAddress({body: this.enderecoRequest})
       .subscribe({
         next: () => {
@@ -73,17 +72,12 @@ export class EnderecoComponent implements OnInit {
       street: endereco.street!,
       neighborhood: endereco.neighborhood!,
       city: endereco.city!,
-      number: endereco.number,
       state: endereco.state!
     }
   }
 
-  consultaCep(valor: any, Endereco: any){
-    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,Endereco));
-  }
-
-  consultaCep2(valor: any){
-    this.cepService.buscar(valor).subscribe((dados)=> this.transform(dados));
+  consultaCep(valor: any, form: any){
+    this.cepService.buscar(valor).subscribe((dados)=> this.populaForm(dados,form));
   }
 
   populaForm(dados:any, form: FormControl){

@@ -4,6 +4,5 @@ export interface Endereco {
   neighborhood?: String;
   cep?: String;
   city?: String;
-  number?: String;
   state?: String;
 }

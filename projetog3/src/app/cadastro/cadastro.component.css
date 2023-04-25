@@ -38,11 +38,9 @@ label{
 .informacao{
   display: flex;
 }
-
-:host ::ng-deep .p-password-input {
-	width: 350px;
+#confirmaSenha{
+  margin-left: 40px;
 }
-
 
 button{
   width: 100%;
