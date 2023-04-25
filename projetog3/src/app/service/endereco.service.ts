@@ -18,20 +18,23 @@ export class EnderecoService extends BaseServiceService {
     super(config, http);
   }
 
-  static readonly save_address_path = 'address/user/{user_id}';
+  static readonly save_address_path = '/address/user/';
 
   save$AddresResponse(
     params: { body: EnderecoRequest },
     context?: HttpContext
   ): Observable<StrictHttpResponse<Endereco>> {
+    console.log("cheguei na saveaddressResponse")
     const rb = new RequestBuilder(
       this.rootUrl,
-      EnderecoService.save_address_path,
+      EnderecoService.save_address_path + params.body.userId,
       'post'
     );
     if (params) {
       rb.body(params.body, 'application/json');
+
     }
+    console.log("cheguei no return")
 
     return this.http
       .request(
@@ -60,7 +63,7 @@ export class EnderecoService extends BaseServiceService {
     );
   }
 
-  static readonly get_address_path = 'address/{user_id}';
+  static readonly get_address_path = '/address/{user_id}';
 
   findAll$Response(
     params: {
@@ -104,7 +107,7 @@ export class EnderecoService extends BaseServiceService {
     );
   }
 
-  static readonly delete_address_path = 'address/{adress_id}';
+  static readonly delete_address_path = '/address/{adress_id}';
 
   delete$Response(
     params: {

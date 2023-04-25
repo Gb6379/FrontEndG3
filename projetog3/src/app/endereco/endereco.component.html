@@ -4,36 +4,36 @@
           <h3>Onde voce quer receber seu pedido</h3>
           <br>
           <span class="p-float-label">
-              <input type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(cep.value , f)" pInputText>
+              <input  [(ngModel)] = "enderecoRequest.cep" type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(enderecoRequest.cep , f)" pInputText>
               <label for="cep">CEP</label>
             </span>
             &nbsp;
             <br>
             <span class="p-float-label">
-            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" ngModel #bairro="ngModel" disabled pInputText>
+            <input [(ngModel)] = "enderecoRequest.neighborhood" type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" ngModel #enderecoRequest.neighborhood="ngModel" disabled pInputText>
             <label for="bairro">Bairro</label>
           </span>
 
           &nbsp;
           <br>
             <span class="p-float-label">
-            <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua" ngModel #rua="ngModel" disabled pInputText>
+            <input  [(ngModel)] = "enderecoRequest.street" type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua" ngModel #rua="ngModel" disabled pInputText>
             <label for="logradouro">Rua</label>
             </span>
             &nbsp;
             <br>
             <span class="p-float-label">
-              <input type="text" class="form-control" id="numero" name="numero" pInputText>
+              <input  type="text" class="form-control" id="numero" name="numero" pInputText>
               <label for="numero">Número</label>
             </span>
           &nbsp;
             <span class="p-float-label">
-            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" ngModel #cidade="ngModel" disabled pInputText>
+            <input [(ngModel)] = "enderecoRequest.city" type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" ngModel #cidade="ngModel" disabled pInputText>
             <label for="cidade">Cidade</label>
             </span>
             &nbsp;
             <span class="p-float-label">
-            <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" ngModel #uf="ngModel" disabled pInputText>
+            <input [(ngModel)] = "enderecoRequest.state" type="text" class="form-control" id="uf" name="uf" placeholder="UF" ngModel #uf="ngModel" disabled pInputText>
             <label for="uf">UF</label>
             </span>
           <br>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +34,7 @@ import { EnderecoComponent } from './endereco/endereco.component';
 import { EnderecoListComponent } from './endereco-list/endereco-list.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { HttpInterceptorService } from './interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,15 @@ import {MessageModule} from 'primeng/message';
     MessageModule,
     MessagesModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
+    HttpClient
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

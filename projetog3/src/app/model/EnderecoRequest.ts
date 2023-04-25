@@ -3,6 +3,7 @@ export interface EnderecoRequest {
   neighborhood: String;
   cep: String;
   city: String;
+  number: String,
   state: String;
   userId: number;
 }

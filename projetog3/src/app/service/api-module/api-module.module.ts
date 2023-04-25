@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { ApiConfigurationParams, ApiConfigurationService } from '../api-configuration.service';
 import { HttpClient } from '@angular/common/http';
 import { EnderecoService } from '../endereco.service';
+import { EmpresaServiceService } from '../empresa-service.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 
 
@@ -18,7 +20,9 @@ import { EnderecoService } from '../endereco.service';
     AuthService,
     ApiConfigurationService,
     EnderecoService,
-    
+    ApiConfigurationService,
+    EmpresaServiceService,
+    ShoppingCartService
   ],
 })
 export class ApiModuleModule {
