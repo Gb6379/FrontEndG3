@@ -98,8 +98,6 @@ export class ProdutoService extends BaseServiceService {
   saveProductAndCategory(
     params: {
       body: ProductRequest;
-      category_id: any;
-      header: any;
     },
     context?: HttpContext
   ): Observable<any> {
@@ -109,18 +107,18 @@ export class ProdutoService extends BaseServiceService {
   }
 
   save$Response(//save product and category
-    params: { body: ProductRequest; category_id: any; header: any },
+    params: { body: ProductRequest },
     context?: HttpContext
   ): Observable<StrictHttpResponse<any>> {
     const rb = new RequestBuilder(
       this.rootUrl,
-      ProdutoService.save_path + params.category_id,
+      ProdutoService.save_path + params.body.categoryId + params.body.companyId,
       'post'
     );
     if (params) {
-      rb.header('Authorization', params.header);
+     
       rb.body(params.body, 'application/json');
-      rb.path('category_id', params['category_id'], {});
+    
     }
 
     return this.http

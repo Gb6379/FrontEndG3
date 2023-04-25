@@ -6,7 +6,7 @@ export interface ProductRequest {
   price?: string;
   imageUrl?: string;
   amount?: string;
-  companyId: number;
-  categoryId: number;
+  companyId?: number;
+  categoryId?: number;
     
 }

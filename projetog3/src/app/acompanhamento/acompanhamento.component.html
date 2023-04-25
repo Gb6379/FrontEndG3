@@ -2,7 +2,7 @@
     <div class="cab">
         <span>Dados da entrega</span>
     </div>
-    <div class="endereco">
+    <div class="endereco" (blur)="getOrders()">
         <div class="dados">
             <span><strong>Rua:</strong> {{'Rua dos Alfredos 403'}}</span>
         </div>
@@ -20,4 +20,29 @@
     <button class="btn-voltar">
         VOLTAR
     </button>
+</div>
+
+
+<h2 class="mb-3">Meus Pedidos</h2>
+<div class="container margem-superior">
+  <div class="card">
+<p-table [value]="order" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+  <tr>
+    <th>Valor total</th>
+    <th>Status</th>
+    <th>Numero</th>
+    <th>Cep</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-order>
+  <tr>
+    <td>{{ order.totalPrice }}</td>
+    <td>{{ order.status}}</td>
+
+</ng-template>
+</p-table>
+</div>
 </div>

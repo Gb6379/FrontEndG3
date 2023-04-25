@@ -18,10 +18,6 @@ export class ProdutoComponent implements OnInit {
  
   categoria: Categoria[] =[];
 
-  cities: any[];
-
-  selectedCityCode: string;
-
   product:Product[] = [];
 
   productRequest: ProductRequest = {name: "", price: "", amount: "", companyId:-1, categoryId: -1}
@@ -34,12 +30,7 @@ export class ProdutoComponent implements OnInit {
     private tokenService: TokenStorageService,
     private router: Router
   ) {
-    this.cities = [
-      {name: 'Bebidas', code: 'Bebidas'},
-      {name: 'Refeições', code: 'Refeicoess'},
-  ];
-  this.selectedCityCode = ""
-  //this.categoryList= [{name: 'Bebidas', code: 'Bebidas'}]
+   
  
   }
 
@@ -52,7 +43,6 @@ export class ProdutoComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.categoryList = res;
-       // this.categoryList.push(this.categoria.categoryName);
       },
       error: (error) => {
         alert(error);
@@ -63,11 +53,18 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  salvarProduto(categoryId: number) {
-    this.produtoService.saveProductAndCategory({
-      body: this.productRequest,
-      category_id: categoryId,
-      header: this.tokenService.getToken,
+  salvarProduto(categoryList: any) {
+    this.productRequest.categoryId = categoryList[0].id[0];
+    this.productRequest.companyId = this.tokenService.getUserId;
+    console.log("request produto", categoryList[0].id)
+    this.produtoService.saveProductAndCategory({body: this.productRequest}).subscribe({
+      next: (res) => {
+        console.log(res)
+        this.router.navigate(['Lista-produtos']);
+      },
+      error: (err) => {
+        this.errorMsgs = err.error.validationErrors;
+      }
     });
   }
 
