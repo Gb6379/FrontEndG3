@@ -36,6 +36,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
+import { HttpInterceptorService } from './interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
