@@ -1,18 +1,17 @@
-<form [formGroup]="form" class="conteudo">
-  <div class="container margem-superior">
+<div class="container margem-superior">
     <div class="form-group box">
       <img class="logo" src="../../assets/imagens/pyyg-PhotoRoom.png-PhotoRoom.png" alt="ifood-logo">
       <h3>Cadastra-se</h3>
         <h5>Preencha seus dados de cadastro</h5>
 
         <span class="p-float-label">
-          <input [(ngModel)] = "registerRequest.name" type="text" class="form-control" id="nome" name="nome" formControlName="name" pInputText>
+          <input [(ngModel)] = "registerRequest.name" type="text" class="form-control" id="nome" name="nome"  pInputText>
           <label for="usuario">Nome</label>
         </span>
         &nbsp;
         <br>
         <span class="p-float-label">
-          <input [(ngModel)] = "registerRequest.cnpj" type="text" class="form-control" id="cnpj" name="cnpj" formControlName="cnpj" pInputText>
+          <input [(ngModel)] = "registerRequest.cnpj" type="text" class="form-control" id="cnpj" name="cnpj" pInputText>
           <label for="cpf">CNPJ</label>
         </span>
         &nbsp;
@@ -23,14 +22,14 @@
             <label for="telefone">Telefone</label>
           </span>
           <span class="p-float-label">
-            <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" formControlName="email" pInputText>
+            <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" pInputText>
             <label for="email">Email</label>
           </span>
         </div>
         &nbsp;
         <div class="informacao">
         <span class="p-float-label">
-          <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha" formControlName="password"></p-password>
+          <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha"></p-password>
           <label for="password">Senha</label>
         </span>
         <span class="p-float-label">
@@ -71,4 +70,3 @@
         <button class="btn btn-primary button cancelar"> LIMPAR DADOS </button> <!-- provisóriamente sem validação -->
     </div>
   </div>
-</form>

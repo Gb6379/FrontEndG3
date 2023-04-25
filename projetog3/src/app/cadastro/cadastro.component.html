@@ -25,25 +25,27 @@
         &nbsp;
         <br>
 
-        <div class="informacao">
+       
           <span class="p-float-label">
             <input [(ngModel)] = "registerRequest.phone" type="text" class="form-control" id="telefone" name="phone" pInputText>
             <label for="phone">Telefone</label>
           </span>
+          <br>
           <span class="p-float-label">
             <input [(ngModel)] = "registerRequest.email" type="text" class=" form-control" id="email" name="email" pInputText>
             <label id="email" for="email">Email</label>
           </span>
-        </div>
+        
         &nbsp;
 
         <div class="informacao">
           <span class="p-float-label">
-            <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true"></p-password>
+            <p-password [(ngModel)] = "registerRequest.password" [toggleMask]="true" id="senha" styleClass="max-width"></p-password>
             <label for="senha">Senha</label>
           </span>
+          <br>
           <span class="p-float-label">
-            <p-password id="confirmaSenha" [toggleMask]="true"></p-password>
+            <p-password [toggleMask]="true" id="senha"></p-password>
             <label id="confirmaSenha" for="confirmaSenha">Confirmação de senha</label>
           </span>
         </div>

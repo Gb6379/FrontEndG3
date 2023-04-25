@@ -41,9 +41,10 @@ label{
   align-items: center;
 }
 
-#email, #confirmaSenha{
-  margin-left: 40px;
+:host ::ng-deep .p-password-input {
+	width: 350px;
 }
+
 
 button{
   width: 100%;
